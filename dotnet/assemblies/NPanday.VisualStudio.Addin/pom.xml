@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  ~ Licensed to the Apache Software Foundation (ASF) under one
+  ~ or more contributor license agreements.  See the NOTICE file
+  ~ distributed with this work for additional information
+  ~ regarding copyright ownership.  The ASF licenses this file
+  ~ to you under the Apache License, Version 2.0 (the
+  ~ "License"); you may not use this file except in compliance
+  ~ with the License.  You may obtain a copy of the License at
+  ~
+  ~   http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing,
+  ~ software distributed under the License is distributed on an
+  ~ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+  ~ KIND, either express or implied.  See the License for the
+  ~ specific language governing permissions and limitations
+  ~ under the License.
+  -->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <parent>
+    <groupId>org.apache.npanday</groupId>
+    <version>1.5.0-incubating-SNAPSHOT</version>
+    <artifactId>NPanday.Assemblies</artifactId>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.apache.npanday.visualstudio</groupId>
+  <artifactId>NPanday.VisualStudio.Addin</artifactId>
+  <packaging>visual-studio-addin</packaging>
+  <name>NPanday :: VisualStudio Addin</name>
+  <dependencies>
+    <dependency>
+      <groupId>org.apache.npanday.plugins</groupId>
+      <artifactId>NPanday.Plugin</artifactId>
+      <version>1.5.0-incubating-SNAPSHOT</version>
+      <type>dotnet-library</type>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.logging</groupId>
+      <artifactId>log4net</artifactId>
+      <version>1.2.11</version>
+      <type>dotnet-library</type>
+      <classifier>net-2.0</classifier>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.npanday</groupId>
+      <artifactId>NPanday.Model.Pom</artifactId>
+      <version>1.5.0-incubating-SNAPSHOT</version>
+      <type>dotnet-library</type>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.npanday</groupId>
+      <artifactId>NPanday.Artifact</artifactId>
+      <version>1.5.0-incubating-SNAPSHOT</version>
+      <type>dotnet-library</type>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.npanday</groupId>
+      <artifactId>NPanday.Model.Settings</artifactId>
+      <version>1.5.0-incubating-SNAPSHOT</version>
+      <type>dotnet-library</type>
+    </dependency>
+    <dependency>
+      <groupId>Microsoft.VisualStudio.CommandBars</groupId>
+      <artifactId>Microsoft.VisualStudio.CommandBars</artifactId>
+      <version>8.0.0.0</version>
+      <type>gac</type>
+      <classifier>b03f5f7f11d50a3a</classifier>
+    </dependency>
+    <dependency>
+      <groupId>EnvDTE</groupId>
+      <artifactId>EnvDTE</artifactId>
+      <version>8.0.0.0</version>
+      <type>gac</type>
+      <classifier>b03f5f7f11d50a3a</classifier>
+    </dependency>
+    <dependency>
+      <groupId>EnvDTE80</groupId>
+      <artifactId>EnvDTE80</artifactId>
+      <version>8.0.0.0</version>
+      <type>gac</type>
+      <classifier>b03f5f7f11d50a3a</classifier>
+    </dependency>
+    <dependency>
+      <groupId>Extensibility</groupId>
+      <artifactId>Extensibility</artifactId>
+      <version>7.0.3300.0</version>
+      <type>gac</type>
+      <classifier>b03f5f7f11d50a3a</classifier>
+    </dependency>
+    <dependency>
+      <groupId>VSLangProj</groupId>
+      <artifactId>VSLangProj</artifactId>
+      <type>gac</type>
+      <version>7.0.3300.0</version>
+      <classifier>b03f5f7f11d50a3a</classifier>
+    </dependency>
+    <dependency>
+      <groupId>VSLangProj80</groupId>
+      <artifactId>VSLangProj80</artifactId>
+      <type>gac</type>
+      <version>8.0.0.0</version>
+      <classifier>b03f5f7f11d50a3a</classifier>
+    </dependency>
+    <dependency>
+      <groupId>VsWebSite.Interop</groupId>
+      <artifactId>VsWebSite.Interop</artifactId>
+      <type>gac</type>
+      <version>8.0.0.0</version>
+      <classifier>b03f5f7f11d50a3a</classifier>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.npanday.visualstudio</groupId>
+      <artifactId>NPanday.ProjectImporterEngine</artifactId>
+      <version>1.5.0-incubating-SNAPSHOT</version>
+      <type>dotnet-library</type>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.npanday</groupId>
+      <artifactId>NPanday.Utils</artifactId>
+      <version>1.5.0-incubating-SNAPSHOT</version>
+      <type>dotnet-library</type>
+    </dependency>
+  </dependencies>
+  <build>
+    <resources>
+      <resource>
+        <!-- So VS can see it too -->
+        <directory>src/main/csharp</directory>
+        <includes>
+          <include>log4net.xml</include>
+        </includes>
+      </resource>
+    </resources>
+  </build>
+  <profiles>
+    <profile>
+      <id>partcover</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.npanday.plugins</groupId>
+            <artifactId>partcover-maven-plugin</artifactId>
+            <configuration>
+              <!--<nUnit>C:\\Program Files\\NUnit 2.5.7\\bin\net-2.0\\nunit-console.exe</nUnit>-->
+              <!--<partCover>C:\\Program Files\PartCover\\PartCover .NET 4.0\\PartCover.exe</partCover>-->
+              <assemblyName>${project.build.directory}/test-assemblies/NPanday.VisualStudio.Addin-test.dll</assemblyName>
+              <!--<msxsl>C:\\WINDOWS\\msxsl.exe</msxsl>-->
+              <!--<xslt>C:\\Program Files\\PartCover\\PartCover .NET 4.0\\xslt\\Report By Assembly.xslt"<xslt>-->
+            </configuration>
+            <executions>
+              <execution>
+                <goals>
+                  <goal>generate</goal>
+                  <goal>convert</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+    <profile>
+      <activation>
+        <property>
+          <name>startVS</name>
+        </property>
+      </activation>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.npanday.plugins</groupId>
+            <artifactId>NPanday.Plugin.Devenv.JavaBinding</artifactId>
+            <version>${project.version}</version>
+            <executions>
+              <execution>
+                <goals>
+                  <goal>start</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
+</project>

@@ -1,0 +1,82 @@
+<!--
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
+<project name="NPanday">
+  <bannerRight>
+    <name>Apache Software Foundation Incubator</name>
+    <src>http://incubator.apache.org/images/apache-incubator-logo.png</src>
+    <href>http://incubator.apache.org/</href>
+  </bannerRight>
+  
+  <bannerLeft>
+    <name>NPanday</name>
+    <src>./images/NPanday.png</src>
+    <href>http://incubator.apache.org/npanday/</href>
+  </bannerLeft>
+
+  <skin>
+    <groupId>org.apache.npanday</groupId>
+    <artifactId>npanday-skin</artifactId>
+    <version>${project.version}</version>
+  </skin>
+
+  <publishDate position="right" format="d MMM yyyy" />
+  <version position="right" />
+  <body>
+    <breadcrumbs>
+      <item name="NPanday Home" href="http://incubator.apache.org/npanday/" />
+      <item name="NPanday ${project.version}" href="/index.html" />
+    </breadcrumbs>
+
+    <menu name="General">
+      <item name="Overview" href="/index.html"/>
+      <item name="Features" href="/features.html"/>
+
+      <item name="FAQs" href="/faqs.html"/>
+
+      <item name="Download" href="/download.html"/>
+      <item name="Release Notes" href="/release-notes.html"/>
+    </menu>
+
+    <menu name="Using NPanday">
+      <item name="Guides overview" href="./guide/index.html" />
+      <item name="Installation" href="./guide/installation/index.html" />
+      <item name="Visual Studio Add-in" href="./guide/vs/index.html" />
+      <item name="Advanced Use without VS Add-in" href="./guide/advanced/index.html" />
+      <item name="NPanday Plugin Reference" href="./plugins/index.html"/>
+    </menu>
+
+    <menu name="Beyond Building">
+      <item name="Artifact Repositories and Automated Builds" href="./guide/devinfra/index.html" />
+      <item name="Release- and Version Management" href="./guide/advanced/releasing.html" />
+    </menu>
+
+    <menu name="Get Involved">
+      <item name="Developer's Guide" href="./developers/index.html" />
+      <item name="Issue Tracking" href="./issue-tracking.html"/>
+      <item name="Mailing Lists" href="./mail-lists.html"/>
+    </menu>
+
+    <menu ref="reports" />
+
+    <menu name="Resources">
+      <item name="Documentation as PDF" href="./npanday.pdf"/>
+      <item name="Apache Maven" href="http://maven.apache.org/" />
+    </menu>
+  </body>
+</project>

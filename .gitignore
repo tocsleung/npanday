@@ -1,0 +1,12 @@
+target
+*.iml
+*.ipr
+*.iws
+*.suo
+*.csproj.user
+bin
+obj
+plugins/netplugins/*/src/main/java
+plugins/netplugins/*/pom-java.xml
+plugins/site-publish
+.idea

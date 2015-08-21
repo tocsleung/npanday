@@ -1,0 +1,126 @@
+ ------
+ NPanday Overview
+ ------
+ ------
+ 24 Feb 2009
+ ------
+~~Licensed to the Apache Software Foundation (ASF) under one
+~~or more contributor license agreements.  See the NOTICE file
+~~distributed with this work for additional information
+~~regarding copyright ownership.  The ASF licenses this file
+~~to you under the Apache License, Version 2.0 (the
+~~"License"); you may not use this file except in compliance
+~~with the License.  You may obtain a copy of the License at
+~~
+~~    http://www.apache.org/licenses/LICENSE-2.0
+~~
+~~Unless required by applicable law or agreed to in writing,
+~~software distributed under the License is distributed on an
+~~"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+~~KIND, either express or implied.  See the License for the
+~~specific language governing permissions and limitations
+~~under the License.
+
+NPanday
+
+  <<... brings Maven to the .NET developer>>
+
+  NPanday primarily provides two capabilities: a set of Maven plugins for
+  constructing <<.NET-builds in Maven>>,
+  and <<a Visual Studio Addin>> that keeps a Visual Studio project in sync with the Maven POM and adds
+  reference resolution from Maven artifact repositories.
+
+  Together this allows you to use a single tool across .NET,
+  Java or any other Maven-based projects, including the same benefits of dependency management,
+  automated release and source control management, and so on.
+
+  The <<Core Benefits>> of using NPanday + Maven infrastructure are:
+
+    * reproducible builds, build output distribution and inter-project dependency management
+
+    * easy integration with many continuous build servers
+
+    * Maven Ecosystem: for example use {{{http://maven.apache.org/plugins/maven-release-plugin/}Maven Release}}
+      for assisted release process including creation of SCM tags, maintainance branches, and so on. Read more about
+      Maven's features {{{http://maven.apache.org/maven-features.html} on the Maven web site}}.
+
+* NPanday Mindset
+
+  NPanday doesn't intend to replicate MSBuild's (or Visual Studio's build) behavior, or serve as
+  a replacement for Visual Studio users.
+
+  It rather intends to:
+
+    * augment Visual Studio with dependency management and make the build reproducible in clean environments
+
+    * offer a consistent toolchain to build environments with projects in other languages (particularly those using Maven for Java projects)
+
+    * offer a solution for declarative builds for .NET projects that will work consistently whether Visual Studio is used or not
+
+    * expose other Maven features and plugins to .NET projects
+
+    []
+
+  For more information about NPanday, refer to the following guides:
+
+    * {{{./features.html} Features}}
+
+    * {{{./faqs.html} FAQs}}
+
+    * {{{./release-notes.html} Release Notes}}
+
+* User's Guide
+
+   * {{{./guide/index.html} Introduction}}
+
+   * {{{./guide/installation/index.html} Installation}}
+
+   * {{{./guide/vs/index.html} Visual Studio Add-In User's Guide}}
+
+   * {{{./guide/advanced/index.html} Advanced User's Guide}}
+
+   * {{{./guide/devinfra/index.html} Using with Maven-based Development Infrastructure}}
+
+   * {{{./plugins/index.html} Maven Plugin Reference}}
+
+* Contributing to NPanday
+
+  NPanday is an open source project under the Apache License 2.0. You are free to use the application and source code as
+  you wish under those terms.
+
+  We welcome you to contribute to the project by submitting your requests and feedback, patches to the code and
+  participating in development discussions in the discussion area.
+
+  We are looking for active contributors to join the project, and use the Apache meritocracy model by nominating and
+  voting for committers from those that regularly discuss development and submit patches for fixes and enhancements.
+
+** Developer's Guide
+
+  The {{{./developers/index.html} NPanday developer's guide}} contains information on how to checkout and build NPanday
+  for yourself, debug issues, and contribute fixes. It also covers committer's procedures such as the release process
+  and publishing documentation.
+
+** Reporting Bugs and Requesting Features
+
+  You can also help by contributing high quality bug reports and feature requests via the issue tracker, and questions
+  and ideas via the discussion forums:
+
+  * {{{./issue-tracking.html} issue tracking}}
+
+  * {{{./mail-lists.html} mailing list information}}
+
+
+* Project History
+
+ Originally developed in the Apache incubator as NMaven, NPanday is the continuation
+ of the 0.14 development line and its expanded set of features.
+
+ The project aims to provide production level support for Maven in .NET environments today,
+ while working towards a unified solution with other technologies for the future.
+
+ At first, NPanday was located at Codeplex. Late 2010 it moved back under the umbrellea of ASF Incubator,
+ where it now waits for being accepted as a top level project.
+
+Documentation PDF
+
+ This documentation is also available in a {{{./npanday.pdf} single pdf}}.

@@ -1,0 +1,78 @@
+ ------
+ Uninstalling NPanday
+ ------
+ ------
+ 26 Feb 2009
+ ------
+~~Licensed to the Apache Software Foundation (ASF) under one
+~~or more contributor license agreements.  See the NOTICE file
+~~distributed with this work for additional information
+~~regarding copyright ownership.  The ASF licenses this file
+~~to you under the Apache License, Version 2.0 (the
+~~"License"); you may not use this file except in compliance
+~~with the License.  You may obtain a copy of the License at
+~~
+~~    http://www.apache.org/licenses/LICENSE-2.0
+~~
+~~Unless required by applicable law or agreed to in writing,
+~~software distributed under the License is distributed on an
+~~"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+~~KIND, either express or implied.  See the License for the
+~~specific language governing permissions and limitations
+~~under the License.
+
+Uninstalling NPanday
+
+  To remove the NPanday follow these steps:
+
+  [[1]] Run the uninstaller from the Control Panel's Add/Remove programs dialog if you used the MSI to install NPanday.
+  
+  [[2]] Clear the cache by typing the following in a command shell:
+  
+  <<<%ProgramFiles%\\Microsoft Visual Studio 8\\SDK\\v2.0\\Bin\\mscorcfg.msc>>>
+  
+  other possible locations for mscorcfg.msc
+  
+  <<<%windir%\Microsoft.NET\Framework\v1.1.4322\mscorcfg.msc>>>
+  
+  <<<%windir%\ServicePackFiles\i386\mscorcfg.msc>>>
+  
+  <<<%ProgramFiles%\Microsoft SDKs\Windows\v6.0\Bin\mscorcfg.msc>>>
+  
+  [[3]] Go to My Computer > AssemblyCache, click View List. Delete the following two files:
+  
+          * <<<Npanday.Model.Pom>>>
+
+          * <<<NPanday.Plugin>>>
+
+          []
+
+  [[4]] Remove the following file <<<C:\\Users\\[username]\\.m2\\npanday-settings.xml>>>
+  
+  []
+  
+  An alternative to step 3 is to run the following commands from the command prompt as an administrator:
+
+----
+gacutil /u NPanday.Model.Pom
+gacutil /u NPanday.Plugin
+----
+
+Uninstalling without the Installer
+
+  If you didn't use the installer package to install NPanday, you should still perform step 2 onwards above, and then the
+  following additional steps:
+  
+  [[1]] Locate and delete your previous version of the NPanday .NET Build Tool for Visual Studio.
+  It is typically found at the following location, where [username] is
+  replaced with the local username.
+  
+  <<<C:\\Users\\[username]\\My Documents\\Visual Studio 2005\\Addins\\NPanday.VisualStudio.AddIn>>>
+
+  Also delete the Addin-file in corresponding folders for other versions of
+  Visual Studio.
+
+  [[2]] Remove the <<<C:\\Users\\[username]\\.m2\\repository\\org\\apache\\npanday>>> directory
+
+  []
+  

@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Licensed to the Apache Software Foundation (ASF) under one
+  ~ or more contributor license agreements.  See the NOTICE file
+  ~ distributed with this work for additional information
+  ~ regarding copyright ownership.  The ASF licenses this file
+  ~ to you under the Apache License, Version 2.0 (the
+  ~ "License"); you may not use this file except in compliance
+  ~ with the License.  You may obtain a copy of the License at
+  ~
+  ~   http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing,
+  ~ software distributed under the License is distributed on an
+  ~ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+  ~ KIND, either express or implied.  See the License for the
+  ~ specific language governing permissions and limitations
+  ~ under the License.
+  -->
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <ProjectGuid>{91FC215D-C041-4000-8F71-C04A9EEABE55}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <RootNameSpace>NPanday.ProjectImporter</RootNameSpace>
+    <AssemblyName>NPanday.ProjectImporterEngine</AssemblyName>
+    <BaseIntermediateOutputPath>..\..\..\target\obj\</BaseIntermediateOutputPath>
+    <OutputType>Library</OutputType>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OutputPath>..\..\..\target\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <OutputPath>..\..\..\target\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net, Version=1.2.11.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Build.Engine" />
+    <Reference Include="Microsoft.Build.Framework" />
+    <Reference Include="Microsoft.Build.Tasks" />
+    <Reference Include="Microsoft.Build.Utilities" />
+    <Reference Include="Mono.Cecil, Version=0.9.5.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\target\test-assemblies\Mono.Cecil.dll</HintPath>
+    </Reference>
+    <Reference Include="NPanday.Model.Pom, Version=0.14.0.0, Culture=neutral, PublicKeyToken=4b435f4d76e2f0e6, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\NPanday.Model.Pom\target\NPanday.Model.Pom.dll</HintPath>
+    </Reference>
+    <Reference Include="NPanday.Model.Settings, Version=1.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\NPanday.Model.Settings\target\NPanday.Model.Settings.dll</HintPath>
+    </Reference>
+    <Reference Include="NUnit.Framework">
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Converter\Algorithms\ASPNetPomConverter.cs" />
+    <Compile Include="Converter\Algorithms\AzurePomConverter.cs" />
+    <Compile Include="Converter\Algorithms\AzureWorkerPomConverter.cs" />
+    <Compile Include="Converter\Algorithms\PortablePomConverter.cs" />
+    <Compile Include="Converter\Algorithms\SilverlightPomConverter.cs" />
+    <Compile Include="Converter\Algorithms\WebWithVbOrCsProjectFilePomConverter.cs" />
+    <Compile Include="DependencySearchConfiguration.cs" />
+    <Compile Include="Digest\Algorithms\BaseProjectDigestAlgorithm.cs" />
+    <Compile Include="Utils\LogOnlyBuildEngine.cs" />
+    <Compile Include="Digest\Model\ComReference.cs" />
+    <Compile Include="Digest\Model\SilverlightApplicationReference.cs" />
+    <Compile Include="ImportProjectStructureAlgorithms\AbnormalProject.cs" />
+    <Compile Include="ImportProjectStructureAlgorithms\AbstractProjectAlgorithm.cs" />
+    <Compile Include="ImportProjectStructureAlgorithms\FlatMultiModuleProject.cs" />
+    <Compile Include="ImportProjectStructureAlgorithms\FlatSingleModuleProject.cs" />
+    <Compile Include="ImportProjectStructureAlgorithms\NormalMultiModuleProject.cs" />
+    <Compile Include="ImportProjectStructureAlgorithms\NormalSingleProject.cs" />
+    <Compile Include="Converter\Algorithms\AbstractPomConverter.cs" />
+    <Compile Include="Converter\Algorithms\IPomConverter.cs" />
+    <Compile Include="Converter\Algorithms\NormalPomConverter.cs" />
+    <Compile Include="Converter\Algorithms\WebPomConverter.cs" />
+    <Compile Include="Converter\PomConverter.cs" />
+    <Compile Include="Digest\Algorithms\IProjectDigestAlgorithm.cs" />
+    <Compile Include="Digest\Algorithms\WebProjectDigestAlgorithm.cs" />
+    <Compile Include="Digest\Model\BootstrapperPackage.cs" />
+    <Compile Include="Digest\Model\Compile.cs" />
+    <Compile Include="Digest\Model\Content.cs" />
+    <Compile Include="Digest\Model\EmbeddedResource.cs" />
+    <Compile Include="Digest\Model\Folder.cs" />
+    <Compile Include="Digest\Model\IncludeBase.cs" />
+    <Compile Include="Digest\Model\None.cs" />
+    <Compile Include="Digest\Algorithms\NormalProjectDigestAlgorithm.cs" />
+    <Compile Include="Digest\Model\ProjectReference.cs" />
+    <Compile Include="Digest\Model\Reference.cs" />
+    <Compile Include="Digest\Model\WebReferences.cs" />
+    <Compile Include="Digest\Model\WebReferenceUrl.cs" />
+    <Compile Include="Digest\Model\ProjectDigest.cs" />
+    <Compile Include="Digest\ProjectDigester.cs" />
+    <Compile Include="ImportProjectStructureAlgorithms\IProjectTypeImporter.cs" />
+    <Compile Include="NPandayImporter.cs" />
+    <Compile Include="Parser\SlnParser\ProjectSolutionParser.cs" />
+    <Compile Include="Parser\SlnParser\SolutionParser.cs" />
+    <Compile Include="Parser\VisualStudioProjectTypes\VisualStudioProjectTypeEnum.cs" />
+    <Compile Include="Parser\VisualStudioProjectTypes\VisualStudioProjectType.cs" />
+    <Compile Include="Parser\SlnParser\LexanState.cs" />
+    <Compile Include="Parser\SlnParser\LexicalAnalizer.cs" />
+    <Compile Include="Parser\SlnParser\Model\Global.cs" />
+    <Compile Include="Parser\SlnParser\Model\GlobalSection.cs" />
+    <Compile Include="Parser\SlnParser\Model\Project.cs" />
+    <Compile Include="Parser\SlnParser\Model\ProjectSection.cs" />
+    <Compile Include="Parser\SlnParser\Model\Solution.cs" />
+    <Compile Include="Parser\SlnParser\SemanticalData.cs" />
+    <Compile Include="Parser\SlnParser\Semantics.cs" />
+    <Compile Include="Parser\SlnParser\SolutionFactory.cs" />
+    <Compile Include="Utils\MSBuildUtils.cs" />
+    <Compile Include="Validator\ProjectStructureType.cs" />
+    <Compile Include="Validator\ProjectValidator.cs" />
+    <Compile Include="Verifiers\VerifyProjectImportSyncronization.cs" />
+    <Compile Include="Verifiers\VerifyUnitTestsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Verifiers\VerifyUnitTestsForm.Designer.cs">
+      <DependentUpon>VerifyUnitTestsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Verifiers\VerifyUnitTestsToUser.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Verifiers\VerifyUnitTestsForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>VerifyUnitTestsForm.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\NPanday.Artifact\src\main\csharp\NPanday.Artifact.csproj">
+      <Project>{701803D4-90F5-44D7-919D-4844FEB7F936}</Project>
+      <Name>NPanday.Artifact</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\..\NPanday.Utils\src\main\csharp\NPanday.Utils.csproj">
+      <Project>{CAA4864F-F4C8-4024-8535-8B8C112307CE}</Project>
+      <Name>NPanday.Utils</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.Targets" />
+</Project>

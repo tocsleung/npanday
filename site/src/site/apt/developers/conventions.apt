@@ -1,0 +1,110 @@
+ ------
+ NPanday Conventions
+ ------
+ ------
+ 2010-07-03
+ ------
+~~Licensed to the Apache Software Foundation (ASF) under one
+~~or more contributor license agreements.  See the NOTICE file
+~~distributed with this work for additional information
+~~regarding copyright ownership.  The ASF licenses this file
+~~to you under the Apache License, Version 2.0 (the
+~~"License"); you may not use this file except in compliance
+~~with the License.  You may obtain a copy of the License at
+~~
+~~    http://www.apache.org/licenses/LICENSE-2.0
+~~
+~~Unless required by applicable law or agreed to in writing,
+~~software distributed under the License is distributed on an
+~~"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+~~KIND, either express or implied.  See the License for the
+~~specific language governing permissions and limitations
+~~under the License.
+
+NPanday Conventions
+
+ The following sections describe the conventions used within NPanday itself. This section is useful for developers wishing to
+ contribute to NPanday, as well as developers looking for a baseline for their own projects.
+ These conventions are evolving and subject to change as better ideas emerge.
+
+* Identifier Conventions
+
+ * Artifact ID - specified within the pom - is equivalent to the project's module name.
+
+ Project Structure
+
++------+
+ |-- NPanday.Artifact
+ |   `-- src
+ |       `-- main
+ |           `-- csharp
+ |               `-- NPanday
+ |                   `-- Artifact
+ |                       |-- ArtifactContext.cs
+ |                       `-- Artifact.cs
+ `-- pom.xml
++------+
+
+ pom.xml file
+
++------+
+<project xmlns="http://maven.apache.org/POM/4.0.0">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.apache.npanday</groupId>
+  <artifactId>NPanday.Artifact</artifactId>
+  <packaging>library</packaging>
+  <version>0.9</version>
+  <name>NPanday.Artifact</name>
+</project>
++------+
+
+ * We use three Group IDs: org.apache.npanday, org.apache.npanday.plugins and org.apache.npanday.visualstudio.
+ org.apache.npanday.plugins is for mojos or other plugin-related artifacts. org.apache.npanday.visualstudio groups
+ Visual Studio Integration. And org.apache.npanday is for everything else.
+
++------+
+<project xmlns="http://maven.apache.org/POM/4.0.0">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.apache.npanday</groupId>
+  <artifactId>NPanday.Artifact<artifactId>
+  <packaging>library</packaging>
+  <version>0.9</version>
+  <name>NPanday.Artifact</name>
+</project>
++------+
+
+* Plugin Naming Convention
+
+  For plugins going forward, NPanday will use the normal convention of <subject><<<-maven-plugin>>>, e.g.
+  <<<wix-maven-plugin>>>.
+
+* Platform-specific Plugins
+
+ * If an assembly will only compile under a specific platform, those values should be specified within the compiler-config.
+
++------+
+ <project xmlns="http://maven.apache.org/POM/4.0.0">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.apache.npanday.pluginss</groupId>
+  <artifactId>NPanday.Plugins</artifactId>
+  <packaging>pom</packaging>
+  <version>0.9</version>
+  <name>NPanday.Plugins</name>
+  <build>
+    <sourceDirectory>src/main/csharp</sourceDirectory>
+    <testSourceDirectory>src/test/csharp</testSourceDirectory>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.npanday.plugins</groupId>
+        <artifactId>maven-compile-plugin</artifactId>
+        <extensions>true</extensions>
+        <configuration>
+          <vendor>MONO</vendor>
+          <frameworkVersion>2.0.50727</frameworkVersion>
+          <vendorVersion>1.2.3.1</vendorVersion>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>
++------+

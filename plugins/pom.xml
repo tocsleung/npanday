@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Licensed to the Apache Software Foundation (ASF) under one
+  ~ or more contributor license agreements.  See the NOTICE file
+  ~ distributed with this work for additional information
+  ~ regarding copyright ownership.  The ASF licenses this file
+  ~ to you under the Apache License, Version 2.0 (the
+  ~ "License"); you may not use this file except in compliance
+  ~ with the License.  You may obtain a copy of the License at
+  ~
+  ~   http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing,
+  ~ software distributed under the License is distributed on an
+  ~ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+  ~ KIND, either express or implied.  See the License for the
+  ~ specific language governing permissions and limitations
+  ~ under the License.
+  -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <parent>
+    <groupId>org.apache.npanday</groupId>
+    <version>1.5.0-incubating-SNAPSHOT</version>
+    <artifactId>apache-npanday</artifactId>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.apache.npanday.plugins</groupId>
+  <artifactId>maven-dotnet-plugins</artifactId>
+  <url>http://incubator.apache.org/npanday/docs/${project.version}/plugins/</url>
+  <packaging>pom</packaging>
+  <name>NPanday :: Maven Plugins</name>
+  <modules>
+    <module>maven-compile-plugin</module>
+    <module>maven-aspx-plugin</module>
+    <module>aspnet-maven-plugin</module>
+    <module>custom-lifecycle-maven-plugin</module>
+    <module>msdeploy-maven-plugin</module>
+    <module>azure-maven-plugin</module>
+    <module>application-maven-plugin</module>
+    <module>maven-fxcop-plugin</module>
+    <module>maven-install-plugin</module>
+    <module>maven-ilmerge-plugin</module>
+    <module>maven-link-plugin</module>
+    <module>maven-mojo-generator-plugin</module>
+    <module>maven-resgen-plugin</module>
+    <module>maven-resolver-plugin</module>
+    <module>maven-test-plugin</module>
+    <module>maven-xsd-plugin</module>
+    <module>maven-xsp-plugin</module>
+    <module>maven-wsdl-plugin</module>
+    <module>wix-maven-plugin</module>
+    <module>partcover-maven-plugin</module>
+    <module>netplugins/NPanday.Plugin.Addin/javabinding</module>
+    <module>netplugins/NPanday.Plugin.Devenv/javabinding</module>
+    <module>netplugins/NPanday.Plugin.Settings/javabinding</module>
+    <module>netplugins/NPanday.Plugin.SysRef/javabinding</module>
+    <module>netplugins/NPanday.Plugin.Msbuild/javabinding</module>
+    <module>silverlight-maven-plugin</module>
+    <!--module>nuget-maven-plugin</module-->
+    <module>library-importer-maven-plugin</module>
+  </modules>
+  <dependencies>
+    <dependency>
+      <groupId>org.apache.npanday</groupId>
+      <artifactId>dotnet-assembler</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.npanday</groupId>
+      <artifactId>dotnet-executable</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.npanday</groupId>
+      <artifactId>dotnet-plugin</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.maven</groupId>
+      <artifactId>maven-core</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.codehaus.plexus</groupId>
+      <artifactId>plexus-utils</artifactId>
+      <version>${plexus.utils.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.google.guava</groupId>
+      <artifactId>guava</artifactId>
+      <!-- version is defined in parent pom -->
+    </dependency>
+  </dependencies>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <configuration>
+          <reportFormat>plain</reportFormat>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-scm-publish-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>scm-publish</id>
+            <phase>site-deploy</phase>
+            <goals>
+              <goal>publish-scm</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.rat</groupId>
+          <artifactId>apache-rat-plugin</artifactId>
+          <configuration>
+            <excludes>
+              <exclude>netplugins/**/target/**</exclude>
+              <exclude>**/*.iml</exclude>
+              <exclude>**/*.sln</exclude>
+
+              <!-- TODO: generate these to target instead -->
+              <exclude>netplugins/*/src/main/java/**</exclude>
+              <exclude>netplugins/*/pom-java.xml</exclude>
+            </excludes>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+    <extensions>
+      <extension>
+        <groupId>org.apache.maven.wagon</groupId>
+        <artifactId>wagon-scm</artifactId>
+        <version>1.0-beta-6</version>
+      </extension>
+      <extension>
+        <groupId>org.apache.maven.scm</groupId>
+        <artifactId>maven-scm-provider-svnexe</artifactId>
+        <version>1.1</version>
+      </extension>
+    </extensions>
+  </build>
+  <reporting>
+    <excludeDefaults>true</excludeDefaults>
+    <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>emma-maven-plugin</artifactId>
+        <version>1.0-alpha-2</version>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-project-info-reports-plugin</artifactId>
+        <version>2.4</version>
+        <reportSets>
+          <reportSet>
+            <reports>
+              <report>index</report>
+              <report>modules</report>
+            </reports>
+          </reportSet>
+        </reportSets>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-plugin-plugin</artifactId>
+        <version>2.9</version>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jxr-plugin</artifactId>
+        <version>2.2</version>
+      </plugin>
+    </plugins>
+  </reporting>
+
+  <scm>
+    <connection>scm:svn:http://svn.apache.org/repos/asf/incubator/npanday/trunk/plugins</connection>
+    <developerConnection>scm:svn:https://svn.apache.org/repos/asf/incubator/npanday/trunk/plugins</developerConnection>
+    <url>http://svn.apache.org/viewvc/incubator/npanday/trunk/plugins</url>
+  </scm>
+
+  <profiles>
+    <profile>
+      <id>run-its</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-invoker-plugin</artifactId>
+            <version>1.5</version>
+            <configuration>
+              <projectsDirectory>src/it</projectsDirectory>
+              <cloneProjectsTo>target/it</cloneProjectsTo>
+              <showErrors>true</showErrors>
+              <debug>true</debug>
+              <pomIncludes>
+                <pomInclude>*/pom.xml</pomInclude>
+              </pomIncludes>
+              <!-- Can't use localRepositoryPath or -Dmaven.repo.local with NPanday
+              See https://issues.apache.org/jira/browse/NPANDAY-284
+              <localRepositoryPath>target/local-repo</localRepositoryPath> -->
+              <postBuildHookScript>verify</postBuildHookScript>
+              <filterProperties>
+                <npandayVersion>${bootstrap.npanday.version}</npandayVersion>
+              </filterProperties>
+              <properties>
+                <npanday.settings>${project.build.directory}/npanday-settings.xml</npanday.settings>
+              </properties>
+            </configuration>
+            <executions>
+              <execution>
+                <id>integration-test</id>
+                <goals>
+                  <goal>install</goal>
+                  <goal>run</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
+
+  <distributionManagement>
+    <site>
+      <id>site</id>
+      <url>scm:svn:${sitePublishUrl}/plugins</url>
+    </site>
+  </distributionManagement>
+</project>

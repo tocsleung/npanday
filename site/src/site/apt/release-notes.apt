@@ -1,0 +1,436 @@
+ -----
+ Release Notes for NPanday 1.4.0-incubating
+ -----
+~~Licensed to the Apache Software Foundation (ASF) under one
+~~or more contributor license agreements.  See the NOTICE file
+~~distributed with this work for additional information
+~~regarding copyright ownership.  The ASF licenses this file
+~~to you under the Apache License, Version 2.0 (the
+~~"License"); you may not use this file except in compliance
+~~with the License.  You may obtain a copy of the License at
+~~
+~~    http://www.apache.org/licenses/LICENSE-2.0
+~~
+~~Unless required by applicable law or agreed to in writing,
+~~software distributed under the License is distributed on an
+~~"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+~~KIND, either express or implied.  See the License for the
+~~specific language governing permissions and limitations
+~~under the License.
+
+Release Notes for NPanday 1.4.0-incubating
+
+  NPanday .NET Build Tool 1.4.0-incubating release is now available for
+  {{{./download.html} download}}.
+  
+  The {{{./faqs.html} NPanday FAQs}} provides answers to common questions regarding NPanday .NET Build Tool.
+
+* New in NPanday 1.4.0-incubating
+
+  <<Visual Studio 2010 and .Net 4.0 Framework support>>
+  
+  NPanday support for VS 2010 and Net 4.0 Framework.
+  
+  <<Removal of UAC and PAB directories>>
+  
+  UAC and PAB directories were removed thus making NPanday more maven-like.
+
+* Release Notes
+
+** Known issues in NPanday 1.4.0-incubating
+
+  * NPANDAY-234  Visual Studio Addin only works for english Visual Studio versions.
+
+** Changes in NPanday 1.4.0-incubating
+
+  <<Date staged: 05 May 2011>>
+  
+  * NPANDAY-69 NPanday needs to be more synchronized and automated
+
+  * NPANDAY-83 do not hide originating exceptions
+
+  * NPANDAY-186 Remove the uac and pab directories
+
+  * NPANDAY-123 PATH should not have to be set for both Visual Studio AddIn or mvn command-line to function
+
+  * NPANDAY-239 VS Add-In messes up settings.xml
+
+  * NPANDAY-277 NPanday.Plugin.Runner and Loader are not installed to UAC
+
+  * NPANDAY-288 Support for VS 2010 and .NET Framework 4.0
+
+  * NPANDAY-290 Improve console output for integration tests
+
+  * NPANDAY-314 Adding a Maven artifact from VS plugin generates NPANDAY-180-017 error
+
+  * NPANDAY-316 Trying to import WPF-project on 64-bit system (VS 2008) throws FileLoadException
+
+  * NPANDAY-325 Additional parameters for wix-maven-plugin
+
+  * NPANDAY-326 misc. improvements
+
+  * NPANDAY-328 Support for VS2010 WPF Project
+
+  * NPANDAY-329 Support for VS2010 WCF Project
+
+  * NPANDAY-330 Support for VS2010 MVC Project
+
+  * NPANDAY-333 Dependecy of type 'gac' is not resolved correclty
+
+  * NPANDAY-334 Update Integration Tests in relation with the UAC & PAB removal enhancements
+
+  * NPANDAY-335 NPanday on Visual Studio only starts on Debug Mode
+
+  * NPANDAY-336 Add Integration Tests for VS 2010 supported projects (WPF, WCF and MVC)
+
+  * NPANDAY-337 NPanday unusable under linux
+
+  * NPANDAY-339 Npanday.Plugin size 0 in repo
+
+  * NPANDAY-341 command execution fails if paths with space
+
+  * NPANDAY-342 deploy sources artifacts to npanday asset repo
+
+  * NPANDAY-343 Can't successfully build projects (VS 2005 and VS 2008) - Build Error due to Access is denied
+
+  * NPANDAY-347 compile fails on unix if sources in subfolder
+
+  * NPANDAY-348 Import Error when importing WPF projects in VS 2010 on a 64-bit system
+
+  * NPANDAY-349 NPanday not building resource files correctly
+
+  * NPANDAY-351 NPanday does not respect the configured repository in the pom
+
+  * NPANDAY-354 Addin 'resync references' feature fails if using remote repositories but there is no 'mirrors' section in Settings.xml file.
+
+  * NPANDAY-355 Addin 'resync references' feature hard-wires ''http://repo1.maven.org/maven2' as remote repository causing network security violations.
+
+  * NPANDAY-356 Addin 'resync references' feature fails to download latest SNAPSHOT from remote repo if older snapshot file already exists locally.
+
+  * NPANDAY-357 Add 'deploy' option to 'Current NPanday Project' menu options
+
+  * NPANDAY-360 Local Repository not displaying correct artifacts from the local repository
+
+  * NPANDAY-361 Configurable .M2 Folder and npanday-settings.xml lookup
+
+  * NPANDAY-362 npanday-settings.xml in local repository is not overwritten on a new install of npanday.
+
+  * NPANDAY-363 Service Reference is not deleted from pom when removing it in the project
+
+  * NPANDAY-366 Getting "The input line is too long" when NPanday tries to generate the npanday-settings.xml (was "cannot build a project")
+
+  * NPANDAY-367 Building a project that contains a maven artifact from a remote repository generates a new .m2groupId folder
+
+  * NPANDAY-373 Custom Lifecycle Plugin does not bind the produced artifact
+
+  * NPANDAY-376 Intermittent error caused by updating npanday-settings.xml
+
+  * NPANDAY-377 released registry-config.xml contains a hardcoded path
+
+  * NPANDAY-378 malformed npanday-settings.xml should fail the build
+
+  * NPANDAY-379 Exception not caught properly when default path for npanday-settings.xml is used
+
+  * NPANDAY-380 IndexOutOfRangeExcpetion in SettingsGeneratorMojo.GetVendorsFromMicrosoft
+
+  * NPANDAY-381 Missing SVN EOL properties
+
+  * NPANDAY-383 update groupID to org.apache.npanday
+
+  * NPANDAY-385 [regression introduced by 186] JavaBindings-Generator for .NET-Mojos is fragile (and not working for NPanday.Plugin.SettingsGenerator)
+
+  * NPANDAY-386 Support Maven 3 and enable bootstraping NPanday using itself (within the same reactor)
+
+  * NPANDAY-387 Improve the checking of the mirror repos in Reference.cs for artifact resync
+
+  * NPANDAY-394 "Object reference not set to an instance of an object" message is shown when reimporting project with references unavailable in remote repo
+
+  * NPANDAY-396 Improved Documentation
+
+  * NPANDAY-397 NPanday adds 'maven-test-plugin' configuration to pom file based on NUnit.Framework reference in project and not based on test project selected in Project Unit Tests 
+                window
+
+  * NPANDAY-398 [regression introduced by 186] MojoGenerator can't generate .NET-Mojos referencing a newer NPanday.Plugin.dll
+
+  * NPANDAY-400 Mono missing system libraries references during compilation
+
+  * NPANDAY-401 Mono compiler does not support explicit frameworkVersion 3.5
+
+  * NPANDAY-407 Wrong Unit test (on Mac) for status return from "command not found"
+
+  * NPANDAY-412 Execuable path for Windows 7 SDK is not auto-detected when npanday-settings.xml is generated, resgen.exe not found
+
+  * NPANDAY-416 MVN 2.2.1: Tests in projects whose paths contains spaces fails: Reason: maven-test-plugin resolves to plexus-utils:1.1 
+
+  * NPANDAY-417 Take explicit dependency to plexus-utils in a newer version to override the built-in dependency to plexus-utils 1.1 in MVN \< 3 (improves cmd-line handling)
+
+  * NPANDAY-419 Targeting .NET 3.5 does not work when Compact Framework is not installed
+
+  * NPANDAY-424 Bind concrete versions of npanday-plugins in npandays lifecycles
+
+* New in NPanday 1.2
+
+  <<Improved type names available>>
+  
+  Improved type names available (dotnet-library, etc.), and previous types are deprecated (library, etc.)
+  
+  <<MSI installer>>
+  
+  MSI-based installer for the Visual Studio Addin and Maven plugins
+  
+  <<MVC project type support>>
+  
+  The Visual Studio Addin now creates POMs for project using MVC.
+  
+  <<Updated Documentation>>
+  
+  Rewrite of documentation to be more complete.
+
+* Compatibility Changes 
+  
+  * Most previous project packaging and dependency types have been deprecated in favour of more specific <<<dotnet-*>>> alternatives. For more information, see {{{./guide/advanced/project-types.html} Available Project Types}}.
+  
+* Release Notes
+
+** Changes in NPanday 1.2
+
+  <<Date released: 22 June 2010>>
+  
+  * #9011 - Trunk fails to compile when not having VisualStudio
+  
+  * #9019 - java packages not matches with classes package declaration
+  
+  * #9622 - error building npanday on linux
+  
+  * #9627 - Visual Studio Addin Installer
+  
+  * #10276 - Incompatibilty between NPanday and maven-flex-plugin
+  
+  * #10388 - Path separator issue in ArtefactInstallerImpl of dotnet-artifact
+  
+  * #10389 - Specify nunit-console binary for maven-test-plugin
+  
+  * #10603 - Build with embedded resource files
+  
+  * #10710 - Docs on the Automation of NPanday Startup
+  
+  * #10803 - Create Addin Folder during installation if not present
+  
+  * #10813 - Migrate relevant wiki content to bundled documentation
+  
+  * #11453 - vsinstalller:install does not generate the AddOn when My Document is not under ${HOME}
+  
+  * #11480 - NPanday should support MVC
+  
+  * #11524 - Complete integration tests for wix plugin
+  
+  * #11614 - refresh bundled documentation
+  
+  * #11615 - migrate integration-tests to npanday-its
+  
+  * #11635 - Resync Reference unable to download snapshot artifact from Archiva
+  
+  * #11637 - MSBuild output is not shown and errors are ignored
+  
+  * #11649 - Add Maven Artifact dialog may not appear if settings can not be read
+  
+  * #11673 - GAC versions of NPanday.Model.Pom and NPanday.Plugin are not shipped in the 1.1 repository
+  
+  * #11695 - MSBuild Plugin fails to resolve references in a clean environment
+  
+  * #11697 - Visual Studio Add-In needs to maintain the includeSources compile plugin configuration
+  
+  * #11711 - Renaming a web reference would result to adding a new <webreference> node
+  
+  * #11733 - installing an artifact with a snapshot dependency causes NPE
+  
+  * #11746 - show the NPanday version in console when it starts up, and/or have an about box
+  
+  * #11803 - generated ID for remote repository is too long
+  
+  * #11837 - VS crashes when adding a new remote repository
+  
+  * #11938 - VS-Installer-Plugin only supports english environments
+  
+  * #11941 - Doku on Uninstalling NPanday, mscorcfg.msc location
+  
+  * #11946 - Update Documentation: Install + Build NPanday locally with VS 2008 only
+  
+  * #11949 - Update Documentation: NUnit-Console must be configured or in Env Path
+  
+  * #11955 - 1.2-SNAPSHOT referencing 1.1-SNAPSHOT
+  
+  * #12004 - Unable to recognised GAC dependencies
+  
+  * #12011 - Deploy plugin deploys artifacts with a classifier with a different snapshot build number
+  
+  * #12110 - Unable to build VB WebApp projects with a .Net 3.0 Version
+  
+  * #12120 - Misleading warning message when unable to resolve an SCM URL
+  
+  * #12231 - Unable to build NPanday projects on Maven 3
+  
+  * #12239 - NUnit doesn't work on Mono
+  
+  * #12287 - Overzealous project structure check in project importer
+  
+  * #12379 - WiX plugin ITs depend on .NET 3.5 SDK
+  
+  * #12402 - Supporting alternative packaging types
+  
+  * #12549 - WPF applications can miss including required resources
+  
+  * #12686 - Remove the deploy plugin
+  
+  * #12782 - Remove Requirement to use system path for Gac Dependencies
+  
+  * #12901 - Visual Studio Addin should support <mirrors> in settings.xml
+  
+  * #12940 - NPanday Fails to Resolve Dependencies if mixed versions of -SNAPSHOT and Released
+  
+  * #12951 - Document how to add intra solution references
+  
+  * #13018 - NPanday Transitive Dependency Error
+  
+  * #13092 - Logger on Resync
+  
+  * #13199 - compile-plugin calls different goals on deploy for ArtifactType.LIBRARY and ArtifactType.EXE/WINEXE
+  
+  * #13203 - Completely enable npanday for new dotnet-* types
+  
+  * #13446 - Include in Installation docs the instructions on how to install NPanday using the installer
+  
+  * #13449 - vsinstaller-plugin:install fails if the npanday remote repos are not accessible even if artifacts are already in the local repository
+  
+  * #13541 - unable to successfully install NPanday when running the vsinstaller command
+  
+  * #13542 - "Optioninfer" compiler option is not recognized by NPanday
+  
+** Changes in NPanday 1.1
+
+  <<Date released>>: 24 January 2010
+
+  * #9272 - Creation of .msi files
+
+  * #11579 - NPE when project inherits group ID or version
+
+  * #9289 - Check/Fix the Build Process
+
+  * #9290 - Check/Fix the Release Process
+
+  * #9293 - Integration Tests for NPanday
+
+  * #11274 - Documentation for NPanday Plugins
+
+  * #10760 - Error Parsing NPanday.Plugin.Msbuild
+
+  * #10582 - Problem with Projects with Multiple folder levels in Continuum
+
+  * #10675 - In Project import the Resync References should be executed after directory structure support check
+
+  * #10654 - SCM tag is not validated correctly when prefixed with "http://"
+
+  * #10640 - Add Reference in Visual Studio should behave like Add Maven Artifact
+
+  * #11010 - missing NPanday.Plugin.SysRef dependency
+
+  * #10985 - Without POM file, double-clicking a DLL in Add Maven Artifact -> Remote tab will crash VS
+
+  * #10410 - Cannot read settings.xml using -DSettingsFile
+
+  * #10576 - Source distribution for NPanday 1.0.2 includes .svn directories
+
+  * #10578 - Source distribution for NPanday 1.0.2 does not match svn tag
+
+  * #10577 - Source distribution for NPanday 1.0.2 requires latest WinZip
+
+  * #9271 - Support for WCF project type
+
+  * #9270 - Support for WPF project type
+
+  * #9053 - Generate Solution's POM Information doesn't generate the Company Name in GroupId field
+
+  * #9038 - Problem with case of group ids in repository
+
+  * #10685 - Misleading options in popup dialog when Adding Maven Artifact without POM
+
+  * #10551 - Project Importer incorrectly capitalizes groupId
+
+  * #9389 - Configuring Remote Repository successful but artifacts aren't displayed in Remote tab
+
+  * #10570 - Fix formatting of includeSource in generated POM
+
+  * #10716 - Deleting a Web Reference does not totally updates the pom file
+
+  * #10717 - Renaming web reference is successful but the updated pom file is malformed
+
+  * #9644 - Build Error when building a newly created project in VS 2008
+
+  * #10550 - Attempting to Add Maven Artifact without configuring a remote repo crashes VS 2005
+
+  * #10372 - Adding an artifact from a file protocol repository prompts an error.
+
+  * #10411 - Adding a artifact that is already in the project prompts an unnecessary warning message "Cannot add ant not an artifact assembly."
+
+  * #10376 - NPanday Builder fails to be created if built using Maven 2.1.0
+
+  * #10643 - ASPX plugin can copy files to the Bin directory with the wrong filename
+
+** Changes in NPanday 1.0.2
+
+  <<Date released>>: 21 August 2009 
+
+  * #9673 - NPanday copies dependencies to the bin directory on Install 
+
+  * #9802 - Error when doing a new importing and reference does not exist.
+
+  * #9887 - Project Importer does not respect the activeProfile when downloading for artifacts.
+
+  * #9931 - Project Importer SCM Option not working with flat projects
+
+  * #10000 - Mouse click on SCM tag input box of NPanday Import window clears the input box contents.
+
+  * #10011 - NPanday Import; Failed SCM tag add doesn't stop the import process
+
+  * #10053 - Repository change in configure repository tab adds duplicate entry to the repository list.
+
+  * #10123 - When building .Net 3.0 project duplicate references are reported during mvn install
+
+  * #10152 - Directory structure not supported error message is wrongly placed
+
+  * #10162 - Project names should be listed in Project Unit Tests window
+
+  * #10275 - Error message appears multiple times when selecting an invalid URL in the configure repository tab
+
+  * #10273 - Replace 'Select Assemblies' with 'Select Projects' in Project Unit Tests window.
+
+  * #10326 - Update NPanday docs for the repository
+
+** Changes in NPanday 1.0.1
+
+  <<Date released>>: 12 July 2009
+
+  * #8386 - Only the DLL files gets released when releasing a Web Application project type 
+
+  * #9749 - Versioning of Dll's
+
+  * #8962 - Example project for Compiling resources and other file types - Compiling resources and other file types
+
+  * #9070 - Build Error on new Project
+
+  * #9556 - Problem "Command Too Long"
+
+  * #9602 - Tests for projectimporter are failing
+
+  * #9645 - Deleting/Removing web references with VB project does not remove the deleted reference in pom file
+
+  * #9646 - Detect if there are already existing scm tag in the parent pom.
+
+  * #9660 - Build fails if Key File specified
+
+** Changes in NPanday 1.0
+
+  <<Date released>>: 30 March 2009
+
+  Initial release.
+

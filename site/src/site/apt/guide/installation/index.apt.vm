@@ -1,0 +1,175 @@
+ ------
+ NPanday .NET Build Tool Installation and Configuration
+ ------
+ ------
+ 24 Feb 2009
+ ------
+~~Licensed to the Apache Software Foundation (ASF) under one
+~~or more contributor license agreements.  See the NOTICE file
+~~distributed with this work for additional information
+~~regarding copyright ownership.  The ASF licenses this file
+~~to you under the Apache License, Version 2.0 (the
+~~"License"); you may not use this file except in compliance
+~~with the License.  You may obtain a copy of the License at
+~~
+~~    http://www.apache.org/licenses/LICENSE-2.0
+~~
+~~Unless required by applicable law or agreed to in writing,
+~~software distributed under the License is distributed on an
+~~"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+~~KIND, either express or implied.  See the License for the
+~~specific language governing permissions and limitations
+~~under the License.
+
+Pre-requisites
+
+  Running NPanday's Maven plugins requires the following on your system:
+
+    * Maven 2.0.9 or above (see {{{http://maven.apache.org/download.html} Maven's download page}} for instructions).
+
+    * Java Development Kit (JDK) 1.6 or greater ({{{http://www.oracle.com/technetwork/java/javase/downloads/index.html} Java SE Downloads}}). Also, the <<<JAVA_HOME>>> environment variable
+      must be set to the directory where the JDK is installed, for example, <<<C:\\Program Files\\Java\\jdk1.6.0>>>.
+      The <<<java>>> executable must also be available on your path.
+
+    * A suitable SDK for .NET:
+
+      * Visual Studio 2005 (SP1) or the .NET 2.0 SDK for developing .NET 2.0 applications and libraries (.NET 2.0 SDK: {{{http://www.microsoft.com/downloads/details.aspx?FamilyID=fe6f2099-b7b4-4f47-a244-c96d69c35dec&displaylang=en} x86}}, {{{http://www.microsoft.com/downloads/en/details.aspx?FamilyID=1AEF6FCE-6E06-4B66-AFE4-9AAD3C835D3D} x64}})
+
+      * Visual Studio 2008 (SP1) or the {{{http://www.microsoft.com/downloads/en/details.aspx?FamilyID=c17ba869-9671-4330-a63e-1fd44e0e2505&displaylang=en} Microsoft Windows SDK for Windows 7 and .NET 3.5 SP1}} for developing .NET 3.5 applications and
+      libraries.
+
+      * Visual Studio 2010 (SP1) or the {{{http://www.microsoft.com/downloads/en/details.aspx?FamilyID=6b6c21d2-2006-4afa-9702-529fa782d63b&displaylang=en} Microsoft Windows SDK for Windows 7 and .NET 4}} for developing .NET 4 applications and
+      libraries.
+
+      * Visual Studio 2012 or the
+        {{{http://msdn.microsoft.com/en-US/windows/desktop/hh852363.aspx} Microsoft Windows SDK for Windows 8 and .NET 4.5}}
+        and {{{http://www.microsoft.com/en-us/download/details.aspx?id=40760} Microsoft Build Tools}}
+        for developing .NET 4.5 applications and libraries.
+
+      * Visual Studio 2013 or the
+        {{{http://msdn.microsoft.com/en-gb/windows/desktop/bg162891} Microsoft Windows SDK for Windows 8.1}}
+        and {{{http://www.microsoft.com/en-us/download/details.aspx?id=40760} Microsoft Build Tools}}
+        for developing .NET 4.5.1 applications and libraries.
+
+      * Mono for developing .NET applications and libraries across multiple
+        supported platforms
+
+      []
+
+    * {{{http://www.nunit.org/?p=download} NUnit}} in order to run unit tests
+      with NPanday. Make sure the <<<bin>>> directory is on the PATH. NUnit
+      is already installed with Mono.
+
+  Note that on Windows, NPanday requires the "NETFX Tools" made available
+  through the Windows SDK, in addition to framework tools such as <<<csc>>>,
+  <<<vbc>>> and <<<msbuild>>>. It is not required to have multiple versions
+  of the NETFX Tools to target different framework versions, however.
+
+  If you later have problems relating to being unable to find the SDK, refer to the
+  {{{../reference/troubleshooting.html} Troubleshooting}} section. 
+
+Removing a Previous Version of NPanday
+
+  While it is generally safe to install the new version without uninstalling the previous version, to ensure a clean
+  system you may want to follow the {{{./uninstall.html} Uninstalling NPanday}} instructions.
+  
+
+Obtaining NPanday
+
+  NPanday releases are made available at the
+  {{{http://www.apache.org/dist/incubator/npanday/} NPanday Download page}}.
+  From there you can download either an installable MSI, a repository of the
+  required Maven artifacts, or a source archive. The Maven plugins may also be
+  downloaded using the default Maven repositories.
+
+  ~~TODO: additional guides for using the existing repositories
+
+Installing Using the Downloaded Binary Repository
+
+  In this guide, we will use the repository downloaded from the NPanday download page.
+
+* Installing NPanday's Maven Plugins
+
+  Whether you are using just the Visual Studio integration or the full set of capabilities, you must have the Maven
+  environment installed.
+
+  For the purposes of this guide, we will copy the artifacts to our local environment only - however in most developer
+  groups you will host the repository on a shared server that all developers can use to obtain the correct release.
+
+  After downloading the binary repository, unpack the contents (you may need a 3rd party application to expand the
+  <<<tar.gz>>> format on Windows). Next, copy the contents of <<<repository/releases>>> from the archive to
+  <<<%HOMEDRIVE%%HOMEPATH%\\.m2\\repository>>>. This is the default <local repository> of a Maven installation if it
+  has not been modified in Maven's <<<settings.xml>>>.
+
+  For example, you may end up with a structure containing
+  <<<C:\\Users\\[username]\\.m2\\repository\\npanday\\apache-npanday\\\\${project.version}\\apache-npanday-${project.version}.pom>>>.
+
+  To confirm your installation, run the following command, replacing <<<${project.version}>>> with the version you are installing:
+
+----
+mvn help:describe -DgroupId=org.apache.npanday.plugins -DartifactId=maven-compile-plugin -Dversion=${project.version}
+----
+
+  ~~TODO: add a troubleshooting guide and reference here in case it all goes wrong
+
+  If you don't intend to use the Visual Studio Add-in, you can now {{{../advanced/index.html} get started using NPanday's Maven extensions}}.
+  
+Installing the Visual Studio Add-in using the NPanday Installer
+
+  NPanday Installer allows user to use NPanday automatically without the hassle of downloading the repository and running commands to install it.  It will  
+  generate the repository and the add-ins for all versions of Visual Studio.
+
+  To launch the NPanday Setup, click the installer twice,
+ 
+[../../images/vs/installer/screen1.jpg]  
+ 
+  After clicking the 'Next' button, End-User License Agreement wizard page will prompt.  Check the box and click the 'Next' button.
+  
+[../../images/vs/installer/screen2.jpg] 
+  
+  Next wizard page will be for the Custom Setup which will allow user to change the way the features will be installed and the location of the repository.
+
+  If you are going to configure Maven to use NPanday installed on a remote repository, you can disable the installation of its artifacts in your local repository.
+
+  An item for the Visual Studio Addin should appear for each version of Visual Studio that you have installed. You can then select which of these you wish for the Addin to be installed into.
+  
+[../../images/vs/installer/screen3.jpg]
+   
+  After changes were made, click on Next button and user will be redirected to the Installation wizard page.  Click on the 'Install' button to start installation.
+  
+[../../images/vs/installer/screen4.jpg]
+   
+  If installation was successful, user will be prompted with this:
+  
+[../../images/vs/installer/screen5.jpg]
+ 
+  After running the installer the add-in will be located here:
+  <<<C:\\Users\\[username]\\My Documents\\Visual Studio 2005\\Addins\\NPanday.VisualStudio.AddIn>>>
+  (or equivalent for other versions of Visual Studio).
+
+  You can verify that the Maven plugins are also installed correctly by following the same steps as shown in the previous section.
+  
+Verifying the NPanday Add-in
+
+  To verify that the NPanday .NET Build Tool has been configured inside Visual Studio, perform the following instructions:
+
+  [[1]] Launch Visual Studio (either from the command line or from the Windows Start> menu).
+
+  [[2]] From inside Visual Studio, select Tools>NPanday Build System. This automatically starts NPanday and displays a
+        confirmation in the Visual Studio Output window at the bottom of the Visual Studio screen.
+
+  []
+
+[../../images/vs/installer/verify_installation.jpg] NPanday Build System
+
+  You can also set Visual Studio to automatically start NPanday Build System upon startup by checking
+  NPanday.VisualStudio.Addin in Tools > Add-in Manager.
+
+  After it starts, you will not see NPanday Build System listed in the Tools menu, until the next time you start Visual
+  Studio.
+
+* Getting Started with the Visual Studio Add-in
+
+  You can now start Visual Studio and test the Add-in. The next section of this guide will focus on
+  {{{../vs/index.html} using the Visual Studio Add-in}}.
+

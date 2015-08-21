@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://maven.apache.org/POM/4.0.0">
+  <parent>
+    <artifactId>test-parent</artifactId>
+    <groupId>test.group</groupId>
+    <version>1.2.3-SNAPSHOT</version>
+    <relativePath>parent-pom.xml</relativePath>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>flatVBproj</artifactId>
+  <packaging>dotnet-executable</packaging>
+  <name>test.group : flatVBproj</name>
+  <build>
+    <sourceDirectory>./</sourceDirectory>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.npanday.plugins</groupId>
+        <artifactId>maven-compile-plugin</artifactId>
+        <extensions>true</extensions>
+        <configuration>
+          <language>VB</language>
+          <rootNamespace>flatVB_proj</rootNamespace>
+          <define>_MyType="Console",PLATFORM="AnyCPU"</define>
+          <main>flatVB_proj.Module1</main>
+          <doc>flatVB_proj.xml</doc>
+          <imports>
+            <import>Microsoft.VisualBasic</import>
+            <import>System</import>
+            <import>System.Collections</import>
+            <import>System.Collections.Generic</import>
+            <import>System.Data</import>
+            <import>System.Diagnostics</import>
+          </imports>
+          <includeSources>
+            <includeSource>Module1.vb</includeSource>
+            <includeSource>My Project\AssemblyInfo.vb</includeSource>
+            <includeSource>My Project\Application.Designer.vb</includeSource>
+            <includeSource>My Project\Resources.Designer.vb</includeSource>
+            <includeSource>My Project\Settings.Designer.vb</includeSource>
+          </includeSources>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.npanday.plugins</groupId>
+        <artifactId>maven-resgen-plugin</artifactId>
+        <configuration>
+          <embeddedResources>
+            <embeddedResource>
+              <sourceFile>My Project\Resources.resx</sourceFile>
+              <name>flatVB_proj.Resources</name>
+            </embeddedResource>
+          </embeddedResources>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+  <dependencies>
+    <dependency>
+      <groupId>Microsoft.Build.Engine</groupId>
+      <artifactId>Microsoft.Build.Engine</artifactId>
+      <version>2.0.0.0</version>
+      <type>gac_msil</type>
+      <classifier>b03f5f7f11d50a3a</classifier>
+    </dependency>
+  </dependencies>
+</project>

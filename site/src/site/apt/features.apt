@@ -1,0 +1,99 @@
+ ------
+ NPanday Features
+ ------
+ Brett Porter
+ ------
+ 2 February 2010
+ ------
+~~Licensed to the Apache Software Foundation (ASF) under one
+~~or more contributor license agreements.  See the NOTICE file
+~~distributed with this work for additional information
+~~regarding copyright ownership.  The ASF licenses this file
+~~to you under the Apache License, Version 2.0 (the
+~~"License"); you may not use this file except in compliance
+~~with the License.  You may obtain a copy of the License at
+~~
+~~    http://www.apache.org/licenses/LICENSE-2.0
+~~
+~~Unless required by applicable law or agreed to in writing,
+~~software distributed under the License is distributed on an
+~~"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+~~KIND, either express or implied.  See the License for the
+~~specific language governing permissions and limitations
+~~under the License.
+
+Features
+
+  The following features available in NPanday.
+
+* NPanday Visual Studio Add-in Features
+
+  [Maven Builds] Execute Maven directly from Visual Studio or run standalone from a build server.
+
+  [Dependency Management] Add references to the project by automatically obtaining them from a
+                             shared Maven repository.
+
+  [Project Importer] Convenient way of converting an existing .NET Applications so that it can be
+                        built using Maven outside VS, ready for Continuous Integration.
+
+  [Auto-Sync] Synchronization while developing the .NET Application for minimal interaction with
+                 the POM (Project Object Model) file.
+
+  []
+
+* NPanday Maven Integration Features
+
+  NPanday's Maven integration features support console, window and web based applications as listed below:
+
+** C# & VB Project supported project types
+
+  * Windows Application
+
+  * Class Library
+
+  * Console Application
+
+  * Device Application
+
+  * Crystal Reports Application
+
+  * ASP.NET Web Application (also MVC)
+
+  * ASP.NET Web Service Application
+
+  * Windows Presentation Foundation (WPF)
+
+  * Windows Communication Foundation (WCF)
+
+  * {{{./plugins/azure-maven-plugin/index.html}Azure Cloud Services and Worker/Web Roles}}
+
+  []
+
+** Web Site supported project types
+
+  * ASP.Net Web Site
+
+  * ASP.NET Web Service
+
+  []
+
+* NET Frameworks Supported
+
+  * .NET 2.0 / Visual Studio 2005
+
+  * .NET 3.5 / Visual Studio 2008
+
+  * .NET 4.0 / Visual Studio 2010
+
+  * .NET 4.5 / Visual Studio 2012
+
+  * .NET 4.5.1 / Visual Studio 2013
+
+  []
+
+  <<Note:>> There is partial support for Mono, .NET 1.1 and other vendors, but these are currently untested.
+
+* Supported Directory Structures
+
+  Read about the {{{./guide/reference/supported-dir-structures.html}directory structures supported by NPanday}}.
+

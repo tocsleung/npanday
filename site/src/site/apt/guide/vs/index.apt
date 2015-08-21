@@ -1,0 +1,73 @@
+ ----
+ Using the NPanday Visual Studio Add-in
+ ----
+ ----
+ 3 February 2010
+ ----
+~~Licensed to the Apache Software Foundation (ASF) under one
+~~or more contributor license agreements.  See the NOTICE file
+~~distributed with this work for additional information
+~~regarding copyright ownership.  The ASF licenses this file
+~~to you under the Apache License, Version 2.0 (the
+~~"License"); you may not use this file except in compliance
+~~with the License.  You may obtain a copy of the License at
+~~
+~~    http://www.apache.org/licenses/LICENSE-2.0
+~~
+~~Unless required by applicable law or agreed to in writing,
+~~software distributed under the License is distributed on an
+~~"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+~~KIND, either express or implied.  See the License for the
+~~specific language governing permissions and limitations
+~~under the License.
+
+Using the NPanday Visual Studio Add-in
+
+  By this point, you should have NPanday successfully installed as shown in the
+  {{{../installation/index.html} Installation instructions}}, and have Visual Studio started with the NPanday Build Tool
+  running.
+
+  This guide will walk you through a basic introduction to the Visual Studio Add-in, how to use it for typical project
+  tasks, and what configuration options are available.
+
+  Finally, we will discuss the use cases where you might need to manipulate the Maven POM directly and other advanced
+  use cases.
+
+  After completing this guide, you may want to read the guide to
+  {{{../devinfra/index.html} Using NPanday with your Maven Development Infrastructure}}.
+
+  If you encounter any problems, don't forget to consult the
+  {{{../reference/troubleshooting.html} Troubleshooting guide}}.
+
+* Contents
+
+~~ TODO: add testing?
+
+  * {{{./quickstart.html} Quick Start Guide}} - starting a new project and making it buildable by Maven
+
+  * {{{./references.html} Working with references}} - how adding references impacts the project, and how it works with
+    Maven depedencies
+
+  * {{{./webReferences.html} Working with web references}} - how web references in a web application work with NPanday
+
+  * {{{./resyncReferences.html} Keeping references in sync}} - how to ensure project files are portable and references
+    are always available
+
+  * {{{./importing.html} Creating Maven POM's from Visual Studio projects}} - more detail on the import process covered
+    in the quick start guide, including different project types supported
+
+  * {{{./executeGoals.html} Executing Maven Goals}} - more detail on the integration of the Maven lifecycle with
+    Visual Studio by the NPanday Add-in
+
+  * {{{./assemblyKey.html} Setting the Assembly Key}} - how to set a strong name on your build using NPanday 
+  
+  * {{{./configureRepository.html} Configuring a Remote Repository}} - the steps necessary to have a remote repository
+    for downloading Maven artifacts from
+
+  * {{{./settings.html} Maven settings}} - how to configure an alternate Maven settings file
+
+  * {{{../advanced/releasing.html} Releasing .NET projects with Maven}} - how to use the Maven release mechanism from the
+    command line
+
+  []
+  

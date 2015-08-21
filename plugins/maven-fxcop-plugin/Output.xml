@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="http://www.gotdotnet.com/team/fxcop//xsl/1.35/FxCopReport.xsl"?>
+<!--
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
+<FxCopReport Version="1.35">
+ <Localized>
+  <String Key="Category">Category</String>
+  <String Key="CollapseAll">Collapse All</String>
+  <String Key="CheckId">Check Id</String>
+  <String Key="Error">Error</String>
+  <String Key="Errors">error(s)</String>
+  <String Key="Line">Line</String>
+  <String Key="LocationNotStoredInPdb">[Location not stored in Pdb]</String>
+  <String Key="Project">Project</String>
+  <String Key="Rule">Rule</String>
+  <String Key="RuleDescription">Rule Description</String>
+  <String Key="Source">Source</String>
+  <String Key="Target">Target</String>
+  <String Key="Warning">Warning</String>
+  <String Key="Warnings">warning(s)</String>
+  <String Key="ReportTitle">Code Analysis Report</String>
+ </Localized>
+ <Exceptions>
+  <Exception Keyword="CA0055" Kind="AssemblyLoad">
+   <Type>Microsoft.FxCop.Common.AssemblyLoadException</Type>
+   <ExceptionMessage>* Could not load file: 'target\NPanday.Logging.dll'.</ExceptionMessage>
+  </Exception>
+  <Exception Keyword="CA0052" Kind="Engine">
+   <Type>Microsoft.FxCop.Sdk.FxCopException</Type>
+   <ExceptionMessage>No targets were selected.</ExceptionMessage>
+  </Exception>
+ </Exceptions>
+</FxCopReport>

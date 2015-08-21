@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://maven.apache.org/POM/4.0.0">
+  <parent>
+    <artifactId>test-parent</artifactId>
+    <groupId>test.group</groupId>
+    <version>1.2.3-SNAPSHOT</version>
+    <relativePath>..\pom.xml</relativePath>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>SilverlightClassLibrary1</artifactId>
+  <packaging>silverlight-library</packaging>
+  <name>test.group : SilverlightClassLibrary1</name>
+  <build>
+    <sourceDirectory>./</sourceDirectory>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.npanday.plugins</groupId>
+        <artifactId>maven-compile-plugin</artifactId>
+        <extensions>true</extensions>
+      </plugin>
+    </plugins>
+  </build>
+  <dependencies>
+    <dependency>
+      <groupId>mscorlib</groupId>
+      <artifactId>mscorlib</artifactId>
+      <version>1.0.0.0</version>
+      <type>dotnet-library</type>
+    </dependency>
+    <dependency>
+      <groupId>System.Windows</groupId>
+      <artifactId>System.Windows</artifactId>
+      <version>1.0.0.0</version>
+      <type>dotnet-library</type>
+    </dependency>
+    <dependency>
+      <groupId>System.Net</groupId>
+      <artifactId>System.Net</artifactId>
+      <version>1.0.0.0</version>
+      <type>dotnet-library</type>
+    </dependency>
+    <dependency>
+      <groupId>System.Windows.Browser</groupId>
+      <artifactId>System.Windows.Browser</artifactId>
+      <version>1.0.0.0</version>
+      <type>dotnet-library</type>
+    </dependency>
+  </dependencies>
+</project>

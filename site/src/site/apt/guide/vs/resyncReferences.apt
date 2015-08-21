@@ -1,0 +1,49 @@
+ ------
+ Making VS Project Files Portable
+ ------
+ ------
+ 22 April 2009
+ ------
+~~Licensed to the Apache Software Foundation (ASF) under one
+~~or more contributor license agreements.  See the NOTICE file
+~~distributed with this work for additional information
+~~regarding copyright ownership.  The ASF licenses this file
+~~to you under the Apache License, Version 2.0 (the
+~~"License"); you may not use this file except in compliance
+~~with the License.  You may obtain a copy of the License at
+~~
+~~    http://www.apache.org/licenses/LICENSE-2.0
+~~
+~~Unless required by applicable law or agreed to in writing,
+~~software distributed under the License is distributed on an
+~~"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+~~KIND, either express or implied.  See the License for the
+~~specific language governing permissions and limitations
+~~under the License.
+
+Making VS Project Files Portable
+
+   To be able to make VS project files portable, NPanday 1.1 and above provides the Resync References functionality.
+   This will synchronize the references so that the project will still run in other user's machine. Added references
+   will be stored in hidden folder named ".references". When the project is used in other user's machine, the Resync
+   References functionality will download and store the references in the ".references" folder.
+
+   To use Resync References button, right click on the project and go to 'All NPanday Projects' or 'Current NPanday
+   Project' in the context menu and select 'Resync References'.
+
+   Intra-project references are skipped on Resync. Since this behavior was just applied recently in Version 1.0.2,
+   old POMs with intra-project references might generate an error during Resync or Import. To fix this, remove the
+   reference and add it back again. Or simply delete the POM and re-import the project.
+   
+   How Resync Works:
+   
+   * First NPanday will check for the dependency in the local repository, if the dependency is not found NPanday proceeds 
+     to the next possible location.
+     
+   * If NPanday was not able to find the dependency in the local repository NPanday will proceed to check the remote
+     repositories found in the user's settings.xml.
+    
+   * For SNAPSHOT Dependencies NPanday bases from the maven-metadata.xml and gets the latest time stamp versioned dependency.
+
+   In the next section we revisit {{{./importing.html} importing a project into Maven}}. Other topics are available on
+   the {{{./index.html} index}}.

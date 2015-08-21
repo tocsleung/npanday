@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Licensed to the Apache Software Foundation (ASF) under one
+  ~ or more contributor license agreements.  See the NOTICE file
+  ~ distributed with this work for additional information
+  ~ regarding copyright ownership.  The ASF licenses this file
+  ~ to you under the Apache License, Version 2.0 (the
+  ~ "License"); you may not use this file except in compliance
+  ~ with the License.  You may obtain a copy of the License at
+  ~
+  ~   http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing,
+  ~ software distributed under the License is distributed on an
+  ~ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+  ~ KIND, either express or implied.  See the License for the
+  ~ specific language governing permissions and limitations
+  ~ under the License.
+  -->
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://maven.apache.org/POM/4.0.0">
+  <parent>
+    <artifactId>WIXVBWebApp08-parent</artifactId>
+    <groupId>org.apache.npanday.examples</groupId>
+    <version>1.2-SNAPSHOT</version>
+    <relativePath>..\pom.xml</relativePath>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>VBWebApplicationWix</artifactId>
+  <packaging>asp</packaging>
+  <name>Npanday.examples : VBWebApplicationWix</name>
+  <build>
+    <sourceDirectory>.</sourceDirectory>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.npanday.plugins</groupId>
+        <artifactId>maven-compile-plugin</artifactId>
+        <version>@npandayVersion@</version>
+        <extensions>true</extensions>
+        <configuration>
+          <language>VB</language>
+          <rootNamespace>VBWebApplication_Wix</rootNamespace>
+          <define>PLATFORM="AnyCPU"</define>
+          <doc>VBWebApplication_Wix.xml</doc>
+          <imports>
+            <import>Microsoft.VisualBasic</import>
+            <import>System</import>
+            <import>System.Collections</import>
+            <import>System.Collections.Generic</import>
+            <import>System.Data</import>
+            <import>System.Diagnostics</import>
+            <import>System.Collections.Specialized</import>
+            <import>System.Configuration</import>
+            <import>System.Text</import>
+            <import>System.Text.RegularExpressions</import>
+            <import>System.Web</import>
+            <import>System.Web.Caching</import>
+            <import>System.Web.SessionState</import>
+            <import>System.Web.Security</import>
+            <import>System.Web.Profile</import>
+            <import>System.Web.UI</import>
+            <import>System.Web.UI.WebControls</import>
+            <import>System.Web.UI.WebControls.WebParts</import>
+            <import>System.Web.UI.HtmlControls</import>
+          </imports>
+          <includeSources>
+            <includeSource>Default.aspx.vb</includeSource>
+            <includeSource>Default.aspx.designer.vb</includeSource>
+            <includeSource>My Project\AssemblyInfo.vb</includeSource>
+            <includeSource>My Project\Application.Designer.vb</includeSource>
+            <includeSource>My Project\Resources.Designer.vb</includeSource>
+            <includeSource>My Project\Settings.Designer.vb</includeSource>
+          </includeSources>
+          <outputDirectory>bin</outputDirectory>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.npanday.plugins</groupId>
+        <artifactId>maven-resgen-plugin</artifactId>
+        <version>@npandayVersion@</version>
+        <configuration>
+          <embeddedResources>
+            <embeddedResource>
+              <sourceFile>My Project\Resources.resx</sourceFile>
+              <name>VBWebApplication_Wix.Resources</name>
+            </embeddedResource>
+          </embeddedResources>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>

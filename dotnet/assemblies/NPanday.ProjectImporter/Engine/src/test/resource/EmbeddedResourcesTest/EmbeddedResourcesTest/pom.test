@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://maven.apache.org/POM/4.0.0">
+  <parent>
+    <artifactId>test-parent</artifactId>
+    <groupId>test.group</groupId>
+    <version>1.2.3-SNAPSHOT</version>
+    <relativePath>..\pom.xml</relativePath>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>EmbeddedResourcesTest</artifactId>
+  <packaging>dotnet-windows-executable</packaging>
+  <name>test.group : EmbeddedResourcesTest</name>
+  <build>
+    <sourceDirectory>./</sourceDirectory>
+    <resources>
+      <resource>
+        <directory>./</directory>
+        <includes>
+          <include>MyImage.bmp</include>
+        </includes>
+      </resource>
+    </resources>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.npanday.plugins</groupId>
+        <artifactId>maven-compile-plugin</artifactId>
+        <extensions>true</extensions>
+        <configuration>
+          <define>DEBUG;TRACE</define>
+          <includeSources>
+            <includeSource>Form1.cs</includeSource>
+            <includeSource>Form1.Designer.cs</includeSource>
+            <includeSource>Program.cs</includeSource>
+            <includeSource>Properties\AssemblyInfo.cs</includeSource>
+            <includeSource>Properties\Resources.Designer.cs</includeSource>
+            <includeSource>Properties\Settings.Designer.cs</includeSource>
+          </includeSources>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.npanday.plugins</groupId>
+        <artifactId>maven-resgen-plugin</artifactId>
+        <configuration>
+          <embeddedResources>
+            <embeddedResource>
+              <sourceFile>Properties\Resources.resx</sourceFile>
+              <name>EmbeddedResourcesTest.Properties.Resources</name>
+            </embeddedResource>
+          </embeddedResources>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>

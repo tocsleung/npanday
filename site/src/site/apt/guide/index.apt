@@ -1,0 +1,55 @@
+ -----
+ NPanday User's Guide
+ -----
+ Brett Porter
+ -----
+ 3 Feb 2010
+ -----
+~~Licensed to the Apache Software Foundation (ASF) under one
+~~or more contributor license agreements.  See the NOTICE file
+~~distributed with this work for additional information
+~~regarding copyright ownership.  The ASF licenses this file
+~~to you under the Apache License, Version 2.0 (the
+~~"License"); you may not use this file except in compliance
+~~with the License.  You may obtain a copy of the License at
+~~
+~~    http://www.apache.org/licenses/LICENSE-2.0
+~~
+~~Unless required by applicable law or agreed to in writing,
+~~software distributed under the License is distributed on an
+~~"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+~~KIND, either express or implied.  See the License for the
+~~specific language governing permissions and limitations
+~~under the License.
+
+NPanday User's Guide
+
+  This guide is broken into the following sections:
+
+    * {{{./installation/index.html} Installation}} - How to download and install an NPanday release
+
+    * {{{./vs/index.html} Visual Studio Add-in User's Guide}} - for Visual Studio users
+
+    * {{{./advanced/index.html} Advanced Users's Guide}} - for Maven users or Visual Studio users wishing to
+                                                           run and maintain builds outside of Visual Studio,
+                                                           or customize the generated POM
+
+    * {{{./devinfra/index.html} Using NPanday with your Maven Development Infrastructure}}
+
+    * Reference
+
+      * {{{/plugins/index.html} Maven Plugin Reference}} - reference for Maven users constructing POMs by hand
+
+      * {{{./reference/troubleshooting.html} Troubleshooting}} - for when it all goes wrong
+
+      * {{{./reference/supported-dir-structures.html} Supported Directory Structures}}
+
+      * {{{./advanced/project-types.html} Available Project Types}} - if you want to understand how NPanday's lifecycles work
+
+      []
+
+    []
+
+  If you are looking for a particular reference, you can skip to those sections now. If you are new to NPanday or Maven,
+  continue reading the introduction.
+

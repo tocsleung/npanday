@@ -1,0 +1,60 @@
+ ------
+ Using Continuum to release .NET projects
+ ------
+ ------
+ 26 Feb 2009
+ ------
+~~Licensed to the Apache Software Foundation (ASF) under one
+~~or more contributor license agreements.  See the NOTICE file
+~~distributed with this work for additional information
+~~regarding copyright ownership.  The ASF licenses this file
+~~to you under the Apache License, Version 2.0 (the
+~~"License"); you may not use this file except in compliance
+~~with the License.  You may obtain a copy of the License at
+~~
+~~    http://www.apache.org/licenses/LICENSE-2.0
+~~
+~~Unless required by applicable law or agreed to in writing,
+~~software distributed under the License is distributed on an
+~~"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+~~KIND, either express or implied.  See the License for the
+~~specific language governing permissions and limitations
+~~under the License.
+
+Using Continuum to release .NET projects
+
+  This guide shows how to use Continuum to release NPanday based projects. It is based on the same commands used for
+  Maven. For more information on that topic, see {{{../advanced/releasing.html} Releasing .NET Projects with Maven}}.
+
+* Pre-release build definition
+
+  As described in the general releasing guide, NPanday needs to prepare COM and GAC references (if your project has
+  them) before a release. To do that, you can add a special build definition for the project module(s) in question.
+
+  Click the <Add> button under the <Build Definitions> tab of the project, and enter the following values:
+
+*----------------------------------+--------------------------------------------------------------------------+
+|<<Field>>                         |<<Value>>                                                                 |
+*----------------------------------+--------------------------------------------------------------------------+
+|POM filename                      |<<<pom.xml>>>                                                             |
+*----------------------------------+--------------------------------------------------------------------------+
+|Goals                             |<<<org.apache.npanday.plugins:NPanday.Plugin.SysRef.JavaBinding:prepare>>>|
+*----------------------------------+--------------------------------------------------------------------------+
+|Arguments                         |<<<--batch-mode --non-recursive>>>                                        |
+*----------------------------------+--------------------------------------------------------------------------+
+|Schedule, Build Environment, Type |<default values>                                                          |
+*----------------------------------+--------------------------------------------------------------------------+
+|Description                       |<optional>                                                                |
+*----------------------------------+--------------------------------------------------------------------------+
+
+  First, make sure that the project has had a successful build with its default build definition (using
+  <<<clean install>>>).
+  
+  Next, execute the new build definition for <<<org.apache.npanday.plugins:NPanday.Plugin.SysRef.JavaBinding:prepare goal>>>
+  by clicking the build icon found to the right of the goal.
+  
+  Once this completes successfully, you can proceed with a release as usual.
+  
+  For instructions on releasing projects using {{{http://continuum.apache.org/} Apache Continuum}},
+  you can refer to Apache Continuum {{{http://continuum.apache.org/docs/latest/user_guides/release/index.html} release documentation}}.
+  

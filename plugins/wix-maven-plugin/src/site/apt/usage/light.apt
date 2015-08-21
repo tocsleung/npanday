@@ -1,0 +1,105 @@
+ -----
+ Light Mojo Usage
+ -----
+~~Licensed to the Apache Software Foundation (ASF) under one
+~~or more contributor license agreements.  See the NOTICE file
+~~distributed with this work for additional information
+~~regarding copyright ownership.  The ASF licenses this file
+~~to you under the Apache License, Version 2.0 (the
+~~"License"); you may not use this file except in compliance
+~~with the License.  You may obtain a copy of the License at
+~~
+~~    http://www.apache.org/licenses/LICENSE-2.0
+~~
+~~Unless required by applicable law or agreed to in writing,
+~~software distributed under the License is distributed on an
+~~"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+~~KIND, either express or implied.  See the License for the
+~~specific language governing permissions and limitations
+~~under the License.
+
+Light Mojo Usage
+
+ Brief examples on how to use the light goal.
+
+* The <<<light>>> mojo
+
+ If you want to convert a single WiX Object (.wixobj) file into a MSI (.msi) file, use this configuration in your POM:
+
++---+
+<project>
+  ...
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.npanday.plugins</groupId>
+        <artifactId>npanday-wix-plugin</artifactId>
+        <version>1.0-SNAPSHOT</version>
+        <configuration>
+          <objectFile>Sample.wixobj</objectFile>
+        </configuration>
+      </plugin>
+    </plugins>
+  ...
+  </build>
+...
+</project>
++---+
+
+ By default the .msi file will have the same name as the single .wixobj file.  
+
+ Generally this will be done in a separate module with pom packaging.
+
+ If you want to convert multiple WiX Object (.wixobj) files into a MSI (.msi) file, use this configuration in your POM:
+
++---+
+<project>
+  ...
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.npanday.plugins</groupId>
+        <artifactId>wix-maven-plugin</artifactId>
+        <version>1.0-SNAPSHOT</version>
+        <configuration>
+          <objectFiles>
+            <objectFile>Sample.wixobj</objectFile>
+            <objectFile>Another.wixobj</objectFile>
+          </objectFiles>
+          <outputFile>SampleInstaller.msi</outputFile>
+        </configuration>
+      </plugin>
+    </plugins>
+  ...
+  </build>
+...
+</project>
++---+
+
+Because there is more than one object file, the outputFile parameter is required to tell WiX what to name the .msi file.
+
+If you have used the outputDirectory parameter for the candle goal, you may need to include the location of the WiX object files:
+
++-----+
+      <plugin>
+        <groupId>org.apache.npanday.plugins</groupId>
+        <artifactId>wix-maven-plugin</artifactId>
+        <version>1.0-SNAPSHOT</version>
+        <configuration>
+          <objectFiles>
+            <objectFile>target/IT005.wixobj</objectFile>
+          </objectFiles>
+          <outputFile>target/IT005.msi</outputFile>
+        </configuration>
+        <executions>
+          <execution>
+            <id>wix</id>
+            <goals>
+              <goal>light</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
++-----+
+
+It is always a good idea to put generated files under the 'target' directory so that they are cleaned up properly.

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  ~ Licensed to the Apache Software Foundation (ASF) under one
+  ~ or more contributor license agreements.  See the NOTICE file
+  ~ distributed with this work for additional information
+  ~ regarding copyright ownership.  The ASF licenses this file
+  ~ to you under the Apache License, Version 2.0 (the
+  ~ "License"); you may not use this file except in compliance
+  ~ with the License.  You may obtain a copy of the License at
+  ~
+  ~   http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing,
+  ~ software distributed under the License is distributed on an
+  ~ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+  ~ KIND, either express or implied.  See the License for the
+  ~ specific language governing permissions and limitations
+  ~ under the License.
+  -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <parent>
+    <groupId>org.apache.npanday.plugins</groupId>
+    <version>1.5.0-incubating-SNAPSHOT</version>
+    <artifactId>maven-dotnet-plugins</artifactId>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>aspnet-maven-plugin</artifactId>
+  <packaging>maven-plugin</packaging>
+  <name>NPanday :: ASP.NET Maven Plugin</name>
+  <description>Maven Plugin for .NET: Support for ASP.NET web projects and applications</description>
+  <dependencies>
+    <dependency>
+      <groupId>org.codehaus.plexus</groupId>
+      <artifactId>plexus-archiver</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.codehaus.plexus</groupId>
+      <artifactId>plexus-utils</artifactId>
+      <version>${plexus.utils.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-assembly-plugin</artifactId>
+      <version>2.2.1</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.npanday</groupId>
+      <artifactId>dotnet-packaging</artifactId>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.rat</groupId>
+          <artifactId>apache-rat-plugin</artifactId>
+          <configuration>
+            <excludes>
+              <exclude>**/*.iml</exclude>
+              <exclude>src/it/**</exclude>
+            </excludes>
+          </configuration>
+        </plugin>
+        <!-- TODO: remove when XDT doesn't rely on Visual Studio being installed -->
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-invoker-plugin</artifactId>
+          <configuration>
+            <pomExcludes>
+              <!-- This test requires Visual Studio 2010 be installed -->
+              <pomExclude>IT004_ConfigurationHandling/pom.xml</pomExclude>
+            </pomExcludes>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+  <profiles>
+    <profile>
+      <id>visualstudio</id>
+      <activation>
+        <file>
+          <exists>
+            ${env.PROGRAMFILES(X86)}\MSBuild\Microsoft\VisualStudio\v10.0\Web\Microsoft.Web.Publishing.Tasks.dll
+          </exists>
+        </file>
+      </activation>
+      <build>
+        <pluginManagement>
+          <plugins>
+            <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-invoker-plugin</artifactId>
+              <configuration>
+                <pomExcludes combine.self="override"/>
+              </configuration>
+            </plugin>
+          </plugins>
+        </pluginManagement>
+      </build>
+    </profile>
+    <profile>
+      <id>visualstudiox86</id>
+      <activation>
+        <file>
+          <exists>${env.PROGRAMFILES}\MSBuild\Microsoft\VisualStudio\v10.0\Web\Microsoft.Web.Publishing.Tasks.dll
+          </exists>
+        </file>
+      </activation>
+      <build>
+        <pluginManagement>
+          <plugins>
+            <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-invoker-plugin</artifactId>
+              <configuration>
+                <pomExcludes combine.self="override"/>
+              </configuration>
+            </plugin>
+          </plugins>
+        </pluginManagement>
+      </build>
+    </profile>
+  </profiles>
+</project>

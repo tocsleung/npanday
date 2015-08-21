@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Licensed to the Apache Software Foundation (ASF) under one
+  ~ or more contributor license agreements.  See the NOTICE file
+  ~ distributed with this work for additional information
+  ~ regarding copyright ownership.  The ASF licenses this file
+  ~ to you under the Apache License, Version 2.0 (the
+  ~ "License"); you may not use this file except in compliance
+  ~ with the License.  You may obtain a copy of the License at
+  ~
+  ~   http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing,
+  ~ software distributed under the License is distributed on an
+  ~ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+  ~ KIND, either express or implied.  See the License for the
+  ~ specific language governing permissions and limitations
+  ~ under the License.
+  -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <parent>
+    <groupId>org.apache.npanday</groupId>
+    <artifactId>npanday-dist-parent</artifactId>
+    <version>1.5.0-incubating-SNAPSHOT</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>npanday-installer</artifactId>
+  <packaging>pom</packaging>
+  <name>NPanday Windows Installer</name>
+  <dependencies>
+    <dependency>
+      <groupId>org.apache.npanday.visualstudio</groupId>
+      <artifactId>NPanday.VisualStudio.Addin</artifactId>
+      <version>${project.version}</version>
+      <exclusions>
+        <exclusion>
+          <groupId>Microsoft.VisualStudio.CommandBars</groupId>
+          <artifactId>Microsoft.VisualStudio.CommandBars</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>EnvDTE</groupId>
+          <artifactId>EnvDTE</artifactId>
+         </exclusion>
+        <exclusion>
+          <groupId>EnvDTE80</groupId>
+          <artifactId>EnvDTE80</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>Extensibility</groupId>
+          <artifactId>Extensibility</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>VSLangProj</groupId>
+          <artifactId>VSLangProj</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>VSLangProj80</groupId>
+          <artifactId>VSLangProj80</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>VsWebSite.Interop</groupId>
+          <artifactId>VsWebSite.Interop</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>Microsoft.Build.Engine</groupId>
+          <artifactId>Microsoft.Build.Engine</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>Microsoft.Build.Framework</groupId>
+          <artifactId>Microsoft.Build.Framework</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>Microsoft.Build.Utilities</groupId>
+          <artifactId>Microsoft.Build.Utilities</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>Microsoft.Build.Tasks</groupId>
+          <artifactId>Microsoft.Build.Tasks</artifactId>
+        </exclusion>
+      </exclusions>
+      <type>dotnet-library</type>
+    </dependency>
+  </dependencies>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <version>2.0</version>
+        <executions>
+          <execution>
+            <id>repository</id>
+            <phase>generate-resources</phase>
+            <configuration>
+              <outputDirectory>${project.build.directory}</outputDirectory>
+              <artifactItems>
+                <artifactItem>
+                  <groupId>org.apache.npanday</groupId>
+                  <artifactId>npanday-repository-builder</artifactId>
+                  <version>${project.version}</version>
+                  <type>tar.gz</type>
+                  <classifier>bin</classifier>
+                </artifactItem>
+              </artifactItems>
+            </configuration>
+            <goals>
+              <goal>unpack</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>addin</id>
+            <phase>generate-resources</phase>
+            <configuration>
+              <outputDirectory>${project.build.directory}/addin</outputDirectory>
+              <includeTypes>dotnet-library</includeTypes>
+              <stripVersion>true</stripVersion>
+              <!-- no way to strip this from the filename, so do it manually next -->
+              <!-- TODO: make copy-dependencies support a pattern for filename: {artifactId}.{extension} -->
+              <excludeArtifactIds>log4net</excludeArtifactIds>
+            </configuration>
+            <goals>
+              <goal>copy-dependencies</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>log4net</id>
+            <phase>generate-resources</phase>
+            <configuration>
+              <outputDirectory>${project.build.directory}/addin</outputDirectory>
+              <artifactItems>
+                <artifactItem>
+                  <groupId>org.apache.logging</groupId>
+                  <artifactId>log4net</artifactId>
+                  <version>1.2.11</version>
+                  <classifier>net-2.0</classifier>
+                  <type>dotnet-library</type>
+                  <destFileName>log4net.dll</destFileName>
+                </artifactItem>
+              </artifactItems>
+            </configuration>
+            <goals>
+              <goal>copy</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.gmaven</groupId>
+        <artifactId>gmaven-plugin</artifactId>
+        <version>1.2</version>
+        <executions>
+          <execution>
+            <phase>generate-resources</phase>
+            <goals>
+              <goal>execute</goal>
+            </goals>
+            <configuration>
+              <source>${basedir}/src/main/groovy/generateWxs.groovy</source>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <!-- For the NPanday types -->
+      <plugin>
+        <groupId>org.apache.npanday.plugins</groupId>
+        <artifactId>maven-compile-plugin</artifactId>
+        <version>${bootstrap.npanday.version}</version>
+        <extensions>true</extensions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.npanday.plugins</groupId>
+        <artifactId>wix-maven-plugin</artifactId>
+        <version>${bootstrap.npanday.version}</version>
+        <configuration>
+          <extensions>
+            <extension>WixNetFxExtension</extension>
+            <extension>WixUtilExtension</extension>
+            <extension>WixUIExtension</extension>
+          </extensions>
+        </configuration>
+        <executions>
+          <execution>
+            <id>create-wixobj-files</id>
+            <phase>prepare-package</phase>
+            <goals>
+              <goal>candle</goal>
+            </goals>
+            <configuration>
+              <sourceFiles>
+                <sourceFile>${project.build.directory}/npanday.wxs</sourceFile>
+              </sourceFiles>
+              <outputDirectory>${project.build.directory}</outputDirectory>
+            </configuration>
+          </execution>
+          <execution>
+            <id>create-msi-files</id>
+            <goals>
+              <goal>light</goal>
+            </goals>
+            <configuration>
+              <objectFiles>
+                <objectFile>${project.build.directory}/npanday.wixobj</objectFile>
+              </objectFiles>
+              <outputFile>${project.build.directory}/NPanday-${project.version}.msi</outputFile>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <!-- TODO: this should be built into the wix plugin, and consider making a packaging type -->
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>build-helper-maven-plugin</artifactId>
+        <version>1.4</version>
+        <executions>
+          <execution>
+            <id>attach-msi</id>
+            <goals>
+              <goal>attach-artifact</goal>
+            </goals>
+            <configuration>
+              <artifacts>
+                <artifact>
+                  <file>${project.build.directory}/NPanday-${project.version}.msi</file>
+                  <type>msi</type>
+                </artifact>
+              </artifacts>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+</project>

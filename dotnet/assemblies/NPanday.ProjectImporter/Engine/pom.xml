@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  ~ Licensed to the Apache Software Foundation (ASF) under one
+  ~ or more contributor license agreements.  See the NOTICE file
+  ~ distributed with this work for additional information
+  ~ regarding copyright ownership.  The ASF licenses this file
+  ~ to you under the Apache License, Version 2.0 (the
+  ~ "License"); you may not use this file except in compliance
+  ~ with the License.  You may obtain a copy of the License at
+  ~
+  ~   http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing,
+  ~ software distributed under the License is distributed on an
+  ~ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+  ~ KIND, either express or implied.  See the License for the
+  ~ specific language governing permissions and limitations
+  ~ under the License.
+  -->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <parent>
+    <groupId>org.apache.npanday.visualstudio</groupId>
+    <version>1.5.0-incubating-SNAPSHOT</version>
+    <artifactId>NPanday.ImporterProjectParent</artifactId>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>NPanday.ProjectImporterEngine</artifactId>
+  <packaging>dotnet-library</packaging>
+  <name>NPanday :: Project Importer :: Engine</name>
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <configuration>
+          <descriptorRefs>
+            <descriptorRef>src</descriptorRef>
+          </descriptorRefs>
+        </configuration>
+      </plugin>
+    </plugins>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.rat</groupId>
+          <artifactId>apache-rat-plugin</artifactId>
+          <configuration>
+            <excludes>
+              <exclude>**/*.iml</exclude>
+              <exclude>**/*.sln</exclude>
+              <exclude>src/test/resource/**</exclude>
+              <exclude>src/test/csharp/obj/**</exclude>
+            </excludes>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+  <dependencies>
+    <dependency>
+      <groupId>org.apache.npanday</groupId>
+      <artifactId>NPanday.Artifact</artifactId>
+      <version>1.5.0-incubating-SNAPSHOT</version>
+      <type>dotnet-library</type>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.logging</groupId>
+      <artifactId>log4net</artifactId>
+      <version>1.2.11</version>
+      <type>dotnet-library</type>
+      <classifier>net-2.0</classifier>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.npanday</groupId>
+      <artifactId>NPanday.Model.Pom</artifactId>
+      <version>1.5.0-incubating-SNAPSHOT</version>
+      <type>dotnet-library</type>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.npanday</groupId>
+      <artifactId>NPanday.Model.Settings</artifactId>
+      <version>1.5.0-incubating-SNAPSHOT</version>
+      <type>dotnet-library</type>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.npanday</groupId>
+      <artifactId>NPanday.Utils</artifactId>
+      <version>1.5.0-incubating-SNAPSHOT</version>
+      <type>dotnet-library</type>
+    </dependency>
+    <dependency>
+      <groupId>Mono.Cecil</groupId>
+      <artifactId>Mono.Cecil</artifactId>
+      <version>0.9.5.4</version>
+      <type>dotnet-library</type>
+    </dependency>
+    <dependency>
+      <groupId>NUnit</groupId>
+      <artifactId>NUnit.Framework</artifactId>
+      <version>2.2.8.0</version>
+      <type>dotnet-library</type>
+<!-- Temporarily disabled as it may cause issues, however cause has not been diagnosed and may be unrelated
+      <scope>test</scope>
+-->
+    </dependency>
+    <dependency>
+      <groupId>Microsoft.Build.Engine</groupId>
+      <artifactId>Microsoft.Build.Engine</artifactId>
+      <version>2.0.0.0</version>
+      <type>gac_msil</type>
+      <classifier>b03f5f7f11d50a3a</classifier>
+    </dependency>
+    <dependency>
+      <groupId>Microsoft.Build.Tasks</groupId>
+      <artifactId>Microsoft.Build.Tasks</artifactId>
+      <version>2.0.0.0</version>
+      <type>gac_msil</type>
+      <classifier>b03f5f7f11d50a3a</classifier>
+    </dependency>
+    <dependency>
+      <groupId>Microsoft.Build.Utilities</groupId>
+      <artifactId>Microsoft.Build.Utilities</artifactId>
+      <version>2.0.0.0</version>
+      <type>gac_msil</type>
+      <classifier>b03f5f7f11d50a3a</classifier>
+    </dependency>
+    <dependency>
+      <groupId>Microsoft.Build.Framework</groupId>
+      <artifactId>Microsoft.Build.Framework</artifactId>
+      <version>2.0.0.0</version>
+      <type>gac_msil</type>
+      <classifier>b03f5f7f11d50a3a</classifier>
+    </dependency>
+  </dependencies>
+  <profiles>
+    <profile>
+      <id>partcover</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.npanday.plugins</groupId>
+            <artifactId>partcover-maven-plugin</artifactId>
+            <configuration>
+              <!--<nUnit>C:\\Program Files\\NUnit 2.5.7\\bin\net-2.0\\nunit-console.exe</nUnit>-->
+              <!--<partCover>C:\\Program Files\PartCover\\PartCover .NET 4.0\\PartCover.exe</partCover>-->
+              <assemblyName>${project.build.directory}/test-assemblies/NPanday.ProjectImporterEngine-test.dll</assemblyName>
+              <!--<msxsl>C:\\WINDOWS\\msxsl.exe</msxsl>-->
+              <!--<xslt>C:\\Program Files\\PartCover\\PartCover .NET 4.0\\xslt\\Report By Assembly.xslt"<xslt>-->
+            </configuration>
+            <executions>
+              <execution>
+                <goals>
+                  <goal>generate</goal>
+                  <goal>convert</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+    <profile>
+      <id>net35</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.npanday.plugins</groupId>
+            <artifactId>maven-test-plugin</artifactId>
+            <configuration>
+              <executionFrameworkVersion>3.5</executionFrameworkVersion>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+    <profile>
+      <id>net40</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.npanday.plugins</groupId>
+            <artifactId>maven-test-plugin</artifactId>
+            <configuration>
+              <executionFrameworkVersion>4.0</executionFrameworkVersion>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
+</project>

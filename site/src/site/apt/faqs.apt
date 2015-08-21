@@ -1,0 +1,82 @@
+ ------
+  NPanday FAQ
+ ------
+ ------
+  25 Feb 2009
+ ------
+~~Licensed to the Apache Software Foundation (ASF) under one
+~~or more contributor license agreements.  See the NOTICE file
+~~distributed with this work for additional information
+~~regarding copyright ownership.  The ASF licenses this file
+~~to you under the Apache License, Version 2.0 (the
+~~"License"); you may not use this file except in compliance
+~~with the License.  You may obtain a copy of the License at
+~~
+~~    http://www.apache.org/licenses/LICENSE-2.0
+~~
+~~Unless required by applicable law or agreed to in writing,
+~~software distributed under the License is distributed on an
+~~"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+~~KIND, either express or implied.  See the License for the
+~~specific language governing permissions and limitations
+~~under the License.
+
+NPanday Frequently Asked Questions
+
+* Why is NPanday named as such?
+  
+  Since NPanday is a project that builds .NET Applications, we brainstormed for a name that would symbolize a great
+  builder, a builder that would have more freedom from its predecessor.
+  
+  <<<Panday>>> is a bisaya word for carpenter/builder and at the same time <<<Panday>>> is a fictional Filipino comic
+  hero that would fight monsters using a dagger which magically turns into a sword when raised into the sky. The
+  materials of the dagger came from a meteorite that struck down on earth during the reign of the monsters and
+  supernatural beings. <<<Panday>>> fights to bring back freedom and peace to the people once more.
+  
+* What are the requirements needed to run NPanday?
+
+  You would need to install the following:
+  
+  * Java 1.6 or higher
+  
+  * Apache Maven 2.0.9 or higher
+  
+  []
+  
+* Do you need to have intensive knowledge of Apache Maven or Java in order to run NPanday?
+
+  No. NPanday's Visual Studio Add-in can ensure the user will have minimal interaction with Apache Maven if desired,
+  without any need to manipulate the POM.
+  
+* Can NPanday build projects outside of Visual Studio?
+
+  Yes. Since the NPanday Visual Studio Add-in creates a POM file from your corresponding .NET Project you can build your
+  .NET Projects using standard Apache Maven commands.
+  
+* Why use NPanday when you can build .NET Applications in Visual Studio or MSBuild?
+
+  By using NPanday, you can take advantage of existing development infrastructure that is compatible with Maven. This
+  is particularly beneficial to organizations that have both Java and .NET development teams that want to share a
+  common infrastructure stack.
+
+  In addition, NPanday brings Maven's dependency management and other plugins (such as developer site generation) to
+  .NET projects with little additional work needed.
+  
+* How do I set the root namespace for a Visual Basic assembly?
+  
+  Add the <<< \<rootNameSpace\> >>> element under <<< \<configuration\> >>> inside the <<<maven-compile-plugin>>> plugin.
+  Just like the following:
+  
++--------------+ 
+<plugin>
+  <groupId>org.apache.npanday.plugins</groupId>
+  <artifactId>maven-compile-plugin</artifactId>
+  <extensions>true</extensions>
+  <configuration>
+    <language>VB</language>
+    <rootNameSpace>my.company</rootNameSpace>
+  </configuration>
+</plugin>
++--------------+
+  
+
